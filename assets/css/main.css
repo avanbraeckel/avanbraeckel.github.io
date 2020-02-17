@@ -145,7 +145,8 @@ input, select, textarea {
 		}
 
 	h1 {
-		font-size: 3em;
+		font-size: 5em;
+		font-weight: 1000;
 		line-height: 1.35em;
 	}
 
