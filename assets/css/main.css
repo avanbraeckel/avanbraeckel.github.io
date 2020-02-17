@@ -122,7 +122,7 @@ input, select, textarea {
 
 	strong, b {
 		color: #555;
-		font-weight: 900;
+		font-weight: 1000;
 	}
 
 	em, i {
@@ -145,13 +145,13 @@ input, select, textarea {
 		}
 
 	h1 {
-		font-size: 5em;
-		font-weight: 1000;
+		font-size: 4.25em;
+		font-weight: 800;
 		line-height: 1.35em;
 	}
 
 	h2 {
-		font-size: 2em;
+		font-size: 3em;
 		line-height: 1.35em;
 	}
 
