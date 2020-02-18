@@ -74,6 +74,23 @@ input, select, textarea {
 
 /* Basic */
 
+	@-ms-viewport {
+		width: device-width;
+	}
+
+	body {
+		-ms-overflow-style: scrollbar;
+	}
+
+	@media screen and (max-width: 480px) {
+
+		html, body {
+			min-width: 320px;
+		}
+
+	}
+
+
 	html {
 		box-sizing: border-box;
 	}
