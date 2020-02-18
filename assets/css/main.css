@@ -2531,6 +2531,72 @@ input, select, textarea {
 		color: #eeeeee;
 	}
 
+/* Wrapper */
+
+	#wrapper {
+		-moz-transition: opacity 0.5s ease;
+		-webkit-transition: opacity 0.5s ease;
+		-ms-transition: opacity 0.5s ease;
+		transition: opacity 0.5s ease;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+	}
+
+		#wrapper > .bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #212931;
+			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
+			background-size: auto,								auto,														100% auto;
+			background-position: center,								center,														top center;
+			background-repeat: repeat,								no-repeat,													no-repeat;
+			background-attachment: scroll,								scroll,														scroll;
+			z-index: -1;
+		}
+
+			#wrapper > .bg.fixed {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+			}
+
+		#wrapper.fade-in:before {
+			pointer-events: none;
+			-moz-transition: opacity 1s ease-in-out;
+			-webkit-transition: opacity 1s ease-in-out;
+			-ms-transition: opacity 1s ease-in-out;
+			transition: opacity 1s ease-in-out;
+			-moz-transition-delay: 0.75s;
+			-webkit-transition-delay: 0.75s;
+			-ms-transition-delay: 0.75s;
+			transition-delay: 0.75s;
+			background: #1e252d;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0;
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+
+		body.is-preload #wrapper.fade-in:before {
+			opacity: 1;
+		}
+
+		@media screen and (orientation: portrait) {
+
+			#wrapper > .bg {
+				background-size: auto,								auto,														auto 175%;
+			}
+
+		}
+
 
 /* Nav */
 
