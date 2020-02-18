@@ -2611,7 +2611,7 @@ input, select, textarea {
 		-ms-transition: -ms-transform 1s ease, opacity 1s ease;
 		transition: transform 1s ease, opacity 1s ease;
 		background: rgba(255, 255, 255, 0.175);
-		height: 4rem;
+		height: 5rem;
 		line-height: 4rem;
 		margin: -4rem auto 0 auto;
 		overflow: hidden;
@@ -2725,7 +2725,7 @@ input, select, textarea {
 					}
 
 						#nav ul.links li.active a:hover {
-							color: #18bfef !important;
+							color: #45f3b0 !important;
 						}
 
 		#nav ul.icons {
