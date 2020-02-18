@@ -2325,6 +2325,10 @@ input, select, textarea {
 			color: #6b88e6;
 		}
 
+		.icon.style7:before {
+			color: #adadad;
+		}
+
 		.icon.major {
 			text-decoration: none;
 			color: #555;
@@ -2823,6 +2827,11 @@ input, select, textarea {
 			background: #fff;
 		}
 
+		.main.styleA {
+			background: #fff;
+			color: rgba(255, 255, 255, 0.75);
+		}
+
 		.main.style2 {
 			background-color: #333;
 			color: rgba(255, 255, 255, 0.75);
@@ -2832,7 +2841,7 @@ input, select, textarea {
 		}
 
 			.main.style2 a {
-				border-bottom-color: rgba(255, 255, 255, 0.5);
+				border-bottom-color: rgba(255, 255, 255, 0);
 			}
 
 				.main.style2 a:hover {
