@@ -245,6 +245,10 @@ input, select, textarea {
 			overflow-x: auto;
 		}
 
+    .white {
+        color: rgb(255, 255, 255);
+    }
+
 	.align-left {
 		text-align: left;
 	}
