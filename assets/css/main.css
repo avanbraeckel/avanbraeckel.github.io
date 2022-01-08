@@ -249,6 +249,10 @@ input, select, textarea {
         color: rgb(255, 255, 255);
     }
 
+    .indented {
+        text-indent: 2em;
+    }
+
 	.align-left {
 		text-align: left;
 	}
