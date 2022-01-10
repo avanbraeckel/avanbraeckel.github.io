@@ -249,6 +249,10 @@ input, select, textarea {
         color: rgb(255, 255, 255);
     }
 
+    .ncr-green {
+        color: #69ce3a
+    }
+
     .indented {
         text-indent: 2em;
     }
