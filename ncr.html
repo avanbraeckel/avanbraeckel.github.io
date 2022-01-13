@@ -214,7 +214,7 @@
                         participate in a brainstorm meeting to come-up with creative ideas to improve the way we do our work, like improving efficiency and 
                         productivity by automating specific tasks. At my first Bion Labs session, I chose to start constructing the "JIRA Helper Tool," which 
                         would increase productivity across any team who wished to use it, by automating tedious and time-consuming JIRA-related tasks, such as 
-                        updating a particular field on a regular basis. To begin, I used Flask to call an API I wrote that automatically updated the field of 
+                        updating a particular field on a regular basis. To begin, I used Flask to call an API I wrote in Python that automatically updated the field of 
                         any JIRA tickets in the given filter to the given value, as our team was required to update a "Customer Facing Next Steps" field on 
                         external incidents periodically, which took-away from our time to do more important work, like investigating crucial incidents that are 
                         reported. Subsequently, with my advice and feedback, along with the thorough internal documentation that I left in the source code, a Summer 
@@ -499,9 +499,13 @@
                             <br><u>Reflection</u>
                                 <br>&emsp;&emsp;At the end of my 8-month work term at NCR, the JIRA Helper Tool that I started was in 
                                 a good condition, with the only remaining step being to give access to the many teams at the office 
-                                through creating a Jenkins job to handle the docker image deployment. I began the side project, and 
+                                through creating a Jenkins job to handle the docker image deployment. For context, the tool automated 
+                                many tedious and time-consuimg processes for NCR developers, increasing overall productivity. As an 
+                                example, the tool allowed the bug-fixing team to simultaneously update the "customer facing next steps" 
+                                field of all incidents actively being investigated with each particular issue's current status, rather 
+                                than updating each one manually, which is required mulitple times per week. I began the side project, and 
                                 its development was later handed-off to a summer intern as his sole responsibility. I helped him to 
-                                familiarize with the existing code that I wrote, and offered advice frequently when he asked me 
+                                familiarize with the existing Python code that I wrote, and offered advice frequently when he asked me 
                                 questions on how to do the implementation. Eventually, his term was finished, and the JIRA Helper 
                                 Tool was in a great state, but only able to be run locally, which isn't convenient for the many teams 
                                 who want to use it.  Unfortunately, I was busy with other work, and my team neglected the biweekly 
