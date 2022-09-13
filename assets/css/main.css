@@ -253,6 +253,10 @@ input, select, textarea {
         color: #69ce3a
     }
 
+    .magnet-blue {
+        color: #378ccd
+    }
+
     .indented {
         text-indent: 2em;
     }
