@@ -1,0 +1,48 @@
+# Node dependencies
+react-app/node_modules/
+**/node_modules/
+
+# Build outputs
+react-app/build/
+**/build/
+
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Coverage
+coverage/
+
+# Generated files
+*.log
+
+# JetBrains
+*.iml
+
+# It can also be useful to ignore lock files if the project is not using them actively
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
