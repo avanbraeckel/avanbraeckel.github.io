@@ -19,7 +19,7 @@ function App() {
     <>
       <Navbar />
       <Content>
-        <h1>Hello, world!</h1>
+        <h1>Under construction!👷🏻‍♂️</h1>
       </Content>
     </>
   );
