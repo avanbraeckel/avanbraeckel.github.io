@@ -9,25 +9,9 @@ File: `react-app/src/Navbar.tsx`
 
 ```tsx
 import React from 'react';
-import './Navbar.css';
+import styled from 'styled-components';
 
-const Navbar: React.FC = () => (
-  <nav className="navbar">
-    <a className="navbar-brand" href="/">
-      Home
-    </a>
-  </nav>
-);
-
-export default Navbar;
-```
-
-## 2) Add navbar styles
-
-File: `react-app/src/Navbar.css`
-
-```css
-.navbar {
+const Bar = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
@@ -38,20 +22,27 @@ File: `react-app/src/Navbar.css`
   align-items: center;
   padding: 0 16px;
   z-index: 1000;
-}
+`;
 
-.navbar-brand {
+const Brand = styled.a`
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
-}
+`;
 
-body {
-  margin: 0;
-  padding-top: 50px; /* move page content below navbar */
-}
+const Navbar: React.FC = () => (
+  <Bar>
+    <Brand href="/">Home</Brand>
+  </Bar>
+);
+
+export default Navbar;
 ```
+
+## 2) Remove old CSS file (not needed)
+
+Delete `react-app/src/Navbar.css` and remove any `import './Navbar.css'` reference.
 
 ## 3) Use `Navbar` in `App`
 
@@ -76,15 +67,9 @@ function App() {
 export default App;
 ```
 
-## 4) Optional: keep content below navbar
+## 4) Keep content below navbar
 
-Add to `App.css`:
-
-```css
-.app-content {
-  padding-top: 20px;
-}
-```
+In this variant we use styled component in `App.tsx` and no specific `App.css` override is required, but ensure your content container has `padding-top: 70px` to avoid being hidden behind the fixed navbar.
 
 ## 5) Run locally and verify
 
