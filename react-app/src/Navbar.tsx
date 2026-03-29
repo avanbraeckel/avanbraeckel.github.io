@@ -1,6 +1,7 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -10,9 +11,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedinIcon from '@mui/icons-material/LinkedIn';
+import ResumeIcon from '@mui/icons-material/Description'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
+import { Stack } from '@mui/material';
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
@@ -25,6 +30,7 @@ const Navbar: React.FC = () => {
 
   const menuItems = [
     { text: 'Home', href: '/' },
+    { text: 'Transient', href: '/transient' },
   ];
 
   const drawer = (
@@ -43,27 +49,59 @@ const Navbar: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
-        <Toolbar>
-          {isMobile && (
-            <IconButton color="inherit" edge="start" onClick={toggleDrawer(true)} sx={{ mr: 2 }}>
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Home
-          </Typography>
-          {!isMobile && menuItems.map((item) => (
-            <Typography
-              key={item.text}
-              component="a"
-              href={item.href}
-              sx={{ color: '#fff', textDecoration: 'none', ml: 2 }}
-            >
-              {item.text}
-            </Typography>
-          ))}
-        </Toolbar>
+      <AppBar position="fixed" sx={{ bgcolor: '#15121fff' }}>
+
+        <Stack direction="row" justifyContent="space-between">
+            <Toolbar>
+              {isMobile && (
+                <IconButton color="inherit" edge="start" onClick={toggleDrawer(true)} sx={{ mr: 2 }}>
+                <MenuIcon />
+                </IconButton>
+              )}
+              {!isMobile && menuItems.map((item) => (
+                <Typography
+                key={item.text}
+                component="a"
+                href={item.href}
+                sx={{ color: '#fff', textDecoration: 'none', ml: 2, mr: 4, fontWeight: 500 }}
+                >
+                {item.text}
+                </Typography>
+              ))}
+            </Toolbar>
+            <Stack direction="row" sx={{ mr: 2 }}>
+              <Button
+                color="inherit"
+                aria-label="Pages Resume"
+                component="a"
+                href="/AustinVanBar.pdf"
+                target="_blank"
+                sx={{ margin: 1.5, textTransform: "none", backgroundColor: '#ffffffff', color: '#15121fff', fontWeight: 500 }}
+                onClick={() => {}}
+              >
+                <Stack direction="row" alignItems="center" spacing={1}>
+                  <Box width={3}></Box> {/* used for spacing for visual purposes */}
+                  <Typography sx={{fontWeight: 500}}>Résumé</Typography>
+                  <ResumeIcon />
+                  <Box width={3}></Box> {/* used for spacing for visual purposes */}
+                </Stack>
+              </Button>
+              <IconButton
+                color="inherit"
+                aria-label="GitHub"
+                onClick={() => window.open("https://github.com/avanbraeckel", '_blank', 'noopener,noreferrer')}
+              >
+                <GitHubIcon />
+              </IconButton>
+              <IconButton
+                color="inherit"
+                aria-label="LinkedIn"
+                onClick={() => window.open("https://www.linkedin.com/in/austin-van-braeckel-1002b1219/", '_blank', 'noopener,noreferrer')}
+              >
+                <LinkedinIcon />
+              </IconButton>
+            </Stack>
+        </Stack>
       </AppBar>
       <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
         {drawer}
