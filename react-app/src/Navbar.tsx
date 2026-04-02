@@ -18,6 +18,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import { Stack } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
@@ -38,7 +39,7 @@ const Navbar: React.FC = () => {
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton component="a" href={item.href}>
+            <ListItemButton component={RouterLink} to={item.href}>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
@@ -61,8 +62,8 @@ const Navbar: React.FC = () => {
               {!isMobile && menuItems.map((item) => (
                 <Typography
                 key={item.text}
-                component="a"
-                href={item.href}
+                  component={RouterLink}
+                  to={item.href}
                 sx={{ color: '#fff', textDecoration: 'none', ml: 2, mr: 4, fontWeight: 500 }}
                 >
                 {item.text}
@@ -74,7 +75,7 @@ const Navbar: React.FC = () => {
                 color="inherit"
                 aria-label="Pages Resume"
                 component="a"
-                href="/AustinVanBar.pdf"
+                href="/AustinVanBraeckel-Resume.pdf"
                 target="_blank"
                 sx={{ margin: 1.5, textTransform: "none", backgroundColor: '#ffffffff', color: '#15121fff', fontWeight: 500 }}
                 onClick={() => {}}

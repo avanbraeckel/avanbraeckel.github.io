@@ -1,6 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
 import Navbar from './Navbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './HomePage';
+import TransientPage from './TransientPage';
 
 const Content = styled.main`
   padding-top: 70px;
@@ -16,12 +18,15 @@ const Content = styled.main`
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
       <Content>
-        <h1>Under construction!👷🏻‍♂️</h1>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/transient" element={<TransientPage />} />
+        </Routes>
       </Content>
-    </>
+    </BrowserRouter>
   );
 }
 
