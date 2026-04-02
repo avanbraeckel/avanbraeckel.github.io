@@ -19,8 +19,10 @@ import { useTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import { Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
+  const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [open, setOpen] = useState(false);
@@ -64,7 +66,13 @@ const Navbar: React.FC = () => {
                 key={item.text}
                   component={RouterLink}
                   to={item.href}
-                sx={{ color: '#fff', textDecoration: 'none', ml: 2, mr: 4, fontWeight: 500 }}
+                  sx={{
+                    color: '#fff',
+                    textDecoration: 'none',
+                    ml: 2,
+                    mr: 4,
+                    fontWeight: location.pathname === item.href ? 600 : 400,
+                  }}
                 >
                 {item.text}
                 </Typography>
