@@ -1,0 +1,224 @@
+/* ---------- Trigger (in the nav bar, mobile only) ---------- */
+.trigger {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-inline-end: -0.625rem; /* optical: align the glyph with the gutter */
+  border-radius: var(--radius-pill);
+  color: var(--fg);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
+}
+
+.trigger:hover {
+  background: var(--fill);
+}
+
+/* Feedback on pointer-down. */
+.trigger:active {
+  transform: scale(0.92);
+  background: var(--fill-strong);
+  transition-duration: var(--duration-press);
+}
+
+@media (min-width: 48rem) {
+  .trigger {
+    display: none;
+  }
+}
+
+/* ---------- Scrim ---------- */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-scrim);
+  background: var(--scrim);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- Sheet ---------- */
+.sheet {
+  position: fixed;
+  inset-inline: 0;
+  /* Extends below the viewport (the skirt) so overshoot never shows an edge. */
+  bottom: calc(-1 * var(--sheet-skirt, 400px));
+  z-index: var(--z-sheet);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - var(--space-7) + var(--sheet-skirt, 400px));
+  padding-bottom: var(--sheet-skirt, 400px);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: var(--material-thick);
+  -webkit-backdrop-filter: var(--material-regular-blur);
+  backdrop-filter: var(--material-regular-blur);
+  border: 1px solid var(--material-border);
+  border-bottom: 0;
+  box-shadow: var(--material-edge), var(--shadow-3);
+  /* All gestures are ours: no browser pan or zoom on the sheet. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  will-change: transform;
+  outline: none;
+}
+
+.grabber {
+  flex: none;
+  align-self: center;
+  width: 2.25rem;
+  height: 0.3125rem;
+  margin-top: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--separator-strong);
+}
+
+.header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-1) var(--space-3) 0 var(--space-5);
+}
+
+.title {
+  color: var(--fg-secondary);
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--fill);
+  color: var(--fg-secondary);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
+}
+
+.close:active {
+  transform: scale(0.92);
+  background: var(--fill-strong);
+  transition-duration: var(--duration-press);
+}
+
+.body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2) var(--space-4)
+    calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+}
+
+.list {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.5rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--fg);
+  font-family: var(--font-heading);
+  font-size: var(--t-title3-size);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
+}
+
+.item:hover {
+  background: var(--fill);
+}
+
+.item:active {
+  transform: scale(0.98);
+  background: var(--fill-strong);
+  transition-duration: var(--duration-press);
+}
+
+/* Once the press turns into a sheet drag, the row is no longer pressed. */
+.sheet[data-dragging] .item:active {
+  transform: none;
+  background: transparent;
+}
+
+.sheet[data-dragging] .close:active {
+  transform: none;
+  background: var(--fill);
+}
+
+.sheet[data-dragging] .active:active {
+  background: var(--accent-fill);
+}
+
+.chevron {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--fg-tertiary);
+}
+
+.active {
+  background: var(--accent-fill);
+  color: var(--accent);
+}
+
+.active .chevron {
+  color: currentColor;
+}
+
+.actions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--separator);
+}
+
+.social {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger:active,
+  .close:active,
+  .item:active {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .sheet {
+    border-color: var(--fg);
+  }
+  .active {
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+}
+
+/* Forced colors drop backgrounds (and box-shadow); outline the current item. */
+@media (forced-colors: active) {
+  .active:not(:focus-visible) {
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+}

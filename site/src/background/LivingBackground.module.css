@@ -1,0 +1,59 @@
+.root {
+  position: fixed;
+  inset: 0 0 auto;
+  /* lvh keeps the size stable while mobile browser chrome shows and hides. */
+  height: 100vh;
+  height: 100lvh;
+  z-index: var(--z-background, -1);
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--bg, var(--background, #fbfbf9));
+}
+
+/* Static stand-in: no WebGL2, before the first frame, or after context loss. */
+.fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      60% 55% at 22% 28%,
+      color-mix(in srgb, var(--accent, #0a6965) 13%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 60% at 78% 70%,
+      color-mix(in srgb, var(--accent-2, #e2915a) 11%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      45% 40% at 60% 15%,
+      color-mix(in srgb, var(--accent, #0a6965) 7%, transparent),
+      transparent 70%
+    );
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 700ms ease-out;
+}
+
+.canvas[data-ready="true"] {
+  opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .root {
+    background: var(--bg, var(--background, #0b0b0c));
+  }
+}
+
+@media (prefers-contrast: more) {
+  .fallback {
+    opacity: 0.45;
+  }
+}

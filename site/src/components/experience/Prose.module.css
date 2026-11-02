@@ -1,0 +1,143 @@
+/*
+ * Case-study body. Text keeps a reading measure; figures marked "wide"
+ * break out of it on large screens.
+ */
+.prose {
+  --measure: 40rem;
+  --wide: 56rem;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [wide-start] minmax(0, calc((var(--wide) - var(--measure)) / 2))
+    [content-start] min(var(--measure), 100%)
+    [content-end] minmax(0, calc((var(--wide) - var(--measure)) / 2))
+    [wide-end] minmax(0, 1fr)
+    [full-end];
+  color: var(--fg);
+}
+
+.prose > * {
+  grid-column: content;
+}
+
+.h2 {
+  margin: var(--space-8) 0 var(--space-3);
+  color: var(--fg);
+  scroll-margin-top: calc(var(--nav-height, 3.25rem) + var(--space-4));
+}
+
+.prose > .h2:first-child {
+  margin-top: 0;
+}
+
+.h3 {
+  margin: var(--space-6) 0 var(--space-2);
+  color: var(--fg);
+}
+
+.p {
+  margin: 0 0 var(--space-4);
+  color: var(--fg-secondary);
+  font-size: clamp(var(--t-body-size), 1rem + 0.2vw, 1.1875rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.p strong,
+.li strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.ul {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+
+.li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--fg-secondary);
+  font-size: clamp(var(--t-body-size), 1rem + 0.2vw, 1.1875rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0.15rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.li > p {
+  margin: 0;
+}
+
+/* ---------- Figures ---------- */
+
+.figure {
+  margin: var(--space-6) 0 var(--space-7);
+}
+
+.wide {
+  grid-column: wide;
+}
+
+.column {
+  grid-column: content;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--fill);
+  box-shadow: 0 0 0 1px var(--separator);
+}
+
+@supports (corner-shape: squircle) {
+  .media {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-lg) * 1.6);
+  }
+}
+
+.media img {
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.row[data-count="3"] {
+  --cols: 3;
+}
+
+@media (max-width: 35.99rem) {
+  .row,
+  .row[data-count="3"] {
+    --cols: 1;
+  }
+}
+
+.cell {
+  aspect-ratio: 4 / 3;
+}
+
+.caption {
+  margin-top: var(--space-3);
+  color: var(--fg-tertiary);
+  text-align: center;
+  text-wrap: balance;
+}

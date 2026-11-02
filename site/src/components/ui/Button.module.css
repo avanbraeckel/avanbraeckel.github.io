@@ -1,0 +1,123 @@
+.button {
+  --button-height: 2.75rem;
+  --button-padding: 1.25rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  min-height: var(--button-height);
+  padding: 0 var(--button-padding);
+  border: 0;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: var(--t-callout-size);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out),
+    color var(--duration-hover) var(--ease-out),
+    box-shadow var(--duration-hover) var(--ease-out);
+}
+
+/* Feedback on pointer-down: instant press, eased release. */
+.button:active:not(:disabled) {
+  transform: scale(0.97);
+  transition-duration: var(--duration-press);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.small {
+  --button-height: 2rem;
+  --button-padding: 0.875rem;
+  font-size: var(--t-footnote-size);
+}
+
+.large {
+  --button-height: 3.25rem;
+  --button-padding: 1.625rem;
+  font-size: var(--t-body-size);
+}
+
+.iconOnly {
+  width: var(--button-height);
+  padding: 0;
+}
+
+.fullWidth {
+  display: flex;
+  width: 100%;
+}
+
+.filled {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: var(--shadow-1);
+}
+
+.filled:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.tinted {
+  background: var(--accent-fill);
+  color: var(--accent);
+}
+
+.tinted:hover:not(:disabled) {
+  background: var(--accent-fill-strong);
+}
+
+.plain {
+  background: transparent;
+  color: var(--accent);
+}
+
+.plain:hover:not(:disabled) {
+  background: var(--accent-fill);
+}
+
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.label {
+  /* Optical centering: caps sit slightly high in the line box. */
+  padding-block: 0.05em 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:active:not(:disabled) {
+    transform: none;
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .tinted,
+  .plain {
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+}
+
+/* Forced colors drop fills; keep filled and tinted buttons recognisable. */
+@media (forced-colors: active) {
+  .filled:not(:focus-visible),
+  .tinted:not(:focus-visible) {
+    outline: 1px solid ButtonText;
+    outline-offset: -1px;
+  }
+}

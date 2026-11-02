@@ -1,0 +1,245 @@
+.page {
+  padding-block: clamp(var(--space-7), 8vw, var(--space-9)) var(--section-space);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-6);
+  align-items: end;
+  margin-bottom: clamp(var(--space-7), 6vw, var(--space-9));
+}
+
+@media (min-width: 48rem) {
+  .header {
+    grid-template-columns: 14rem 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.portrait {
+  width: 9rem;
+}
+
+@media (min-width: 48rem) {
+  .portrait {
+    width: 100%;
+  }
+}
+
+.portraitImg {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 1px var(--separator);
+}
+
+@supports (corner-shape: squircle) {
+  .portraitImg {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-xl) * 1.6);
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 44rem;
+}
+
+.title {
+  composes: t-display from global;
+}
+
+.lead {
+  font-size: clamp(1.1875rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.body {
+  display: grid;
+  gap: var(--section-space);
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: var(--container-narrow);
+  font-size: clamp(var(--t-body-size), 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+@media (min-width: 48rem) {
+  .prose {
+    margin-left: calc(14rem + var(--space-8));
+  }
+}
+
+.sectionTitle {
+  composes: t-title2 from global;
+  margin-bottom: var(--space-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-4);
+}
+
+.interest {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-1),
+    0 0 0 1px var(--separator);
+}
+
+@supports (corner-shape: squircle) {
+  .interest {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-lg) * 1.6);
+  }
+}
+
+.interestTitle {
+  font-size: var(--t-headline-size);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.interestBody {
+  font-size: var(--t-footnote-size);
+  line-height: 1.45;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.photoImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 1px var(--separator);
+}
+
+@supports (corner-shape: squircle) {
+  .photoImg {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-lg) * 1.6);
+  }
+}
+
+.photoCaption {
+  font-size: var(--t-footnote-size);
+  line-height: 1.4;
+  color: var(--fg-secondary);
+}
+
+.music {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (min-width: 60rem) {
+  .photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+
+  .photo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  .photoImg {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow:
+      var(--shadow-2),
+      0 0 0 1px var(--separator);
+  }
+
+  @supports (corner-shape: squircle) {
+    .photoImg {
+      corner-shape: squircle;
+      border-radius: calc(var(--radius-lg) * 1.6);
+    }
+  }
+
+  .photoCaption {
+    font-size: var(--t-footnote-size);
+    line-height: 1.4;
+    color: var(--fg-secondary);
+  }
+
+  .music {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: var(--space-8);
+  }
+}
+
+.musicText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--container-narrow);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.musicText .sectionTitle {
+  margin-bottom: 0;
+}
+
+.musicText cite {
+  font-style: normal;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (prefers-contrast: more) {
+  .interest {
+    box-shadow: 0 0 0 1px var(--fg);
+  }
+}

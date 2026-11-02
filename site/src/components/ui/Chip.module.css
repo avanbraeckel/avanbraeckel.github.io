@@ -1,0 +1,49 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 1.75rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--t-footnote-size);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.small {
+  min-height: 1.5rem;
+  padding: 0 0.625rem;
+  font-size: var(--t-caption-size);
+  letter-spacing: 0.01em;
+}
+
+.neutral {
+  background: var(--fill);
+  color: var(--fg);
+}
+
+.accent {
+  background: var(--accent-fill);
+  color: var(--accent);
+}
+
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  margin-inline-start: -0.15em;
+}
+
+@media (prefers-contrast: more) {
+  .chip {
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+}
+
+@media (forced-colors: active) {
+  .chip:not(:focus-visible) {
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+}

@@ -1,0 +1,89 @@
+.feature {
+  padding-block: var(--section-space);
+}
+
+.inner {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (min-width: 52rem) {
+  .inner {
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(var(--space-7), 6vw, var(--space-10));
+  }
+}
+
+.media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #05070a;
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 1px var(--separator);
+}
+
+@supports (corner-shape: squircle) {
+  .media {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-lg) * 1.6);
+  }
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+}
+
+.cover img {
+  transition: scale 600ms var(--ease-out);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .media:hover .cover img {
+    scale: 1.03;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 30rem;
+  font-size: clamp(var(--t-body-size), 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.55;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.title {
+  composes: t-title1 from global;
+  color: var(--fg);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+}
+
+/* The game's exit portal: still until the link is hovered or focused. */
+.cta .portal[data-playing] {
+  animation-play-state: paused;
+}
+
+.cta:hover .portal[data-playing],
+.cta:focus-visible .portal[data-playing] {
+  animation-play-state: running;
+}
+
+@media (prefers-contrast: more) {
+  .media {
+    box-shadow: 0 0 0 1px var(--fg);
+  }
+}

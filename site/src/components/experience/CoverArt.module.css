@@ -1,0 +1,80 @@
+.frame {
+  --brand: var(--accent);
+  position: relative;
+  overflow: hidden;
+  background: var(--fill);
+  isolation: isolate;
+}
+
+.card {
+  aspect-ratio: 4 / 3;
+}
+
+.hero {
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius-xl);
+  box-shadow:
+    var(--shadow-2),
+    0 0 0 1px var(--separator);
+}
+
+@supports (corner-shape: squircle) {
+  .hero {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-xl) * 1.6);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .hero {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
+  }
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+}
+
+/*
+ * Logo plate: the logos are white wordmarks, so they always sit on a dark
+ * surface, tinted with the company colour from the top-left corner.
+ */
+.plate {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(
+      120% 90% at 0% 0%,
+      color-mix(in srgb, var(--brand) 38%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      90% 80% at 100% 100%,
+      color-mix(in srgb, var(--brand) 18%, transparent),
+      transparent 70%
+    ),
+    #111214;
+}
+
+.logo {
+  width: min(62%, 22rem);
+}
+
+.card .logo {
+  width: 68%;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-contrast: more) {
+  .plate {
+    background: #000;
+  }
+}

@@ -1,0 +1,227 @@
+/*
+ * Design tokens.
+ *
+ * Colors follow prefers-color-scheme. A subtree can force a scheme with
+ * data-theme="light" | "dark"; the dark set is
+ * therefore declared twice: once behind the media query, once for the attribute.
+ *
+ * Raw color tokens (--bg, --fg, --accent, --accent-2) are plain hex so scripts
+ * can read them with getComputedStyle (the living background depends on this).
+ */
+
+/* ---------- Scheme-independent tokens ---------- */
+:root {
+  /* Spacing: 4/8-based, in rem so layout scales with the user's text size. */
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.5rem; /* 24 */
+  --space-6: 2rem; /* 32 */
+  --space-7: 3rem; /* 48 */
+  --space-8: 4rem; /* 64 */
+  --space-9: 6rem; /* 96 */
+  --space-10: 8rem; /* 128 */
+
+  /* Layout */
+  --container-narrow: 42rem;
+  --container-regular: 64rem;
+  --container-wide: 80rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-space: clamp(4rem, 3rem + 5vw, 7.5rem);
+
+  /* Radii. Cards opt into continuous (squircle) corners where supported. */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-pill: 999px;
+
+  /* Z-index scale */
+  --z-background: -1;
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 100;
+  --z-nav: 200;
+  --z-scrim: 300;
+  --z-sheet: 310;
+  --z-toast: 400;
+
+  /* Short CSS-only feedback (press/hover). Gesture motion uses springs in motion.ts. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-press: 100ms;
+  --duration-hover: 240ms;
+
+  /* Material blur (fill and edge are per-scheme, below) */
+  --material-thin-blur: blur(16px) saturate(170%);
+  --material-regular-blur: blur(28px) saturate(180%);
+
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+/* ---------- Light ---------- */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #fbfbf9;
+  --bg-elevated: #ffffff;
+  --fg: #1c1c1e;
+  /* Secondary and tertiary both clear 4.5:1 on --bg, --surface,
+     --surface-secondary and the darkest tint of the living background
+     (src/background/contrast.test.ts), so either can carry text. */
+  --fg-secondary: #5a5a5f;
+  --fg-tertiary: #5d5d61;
+
+  /* Lagoon: a deep teal, the single UI accent */
+  --accent: #0a6965;
+  --accent-hover: #095c58;
+  --on-accent: #ffffff;
+  /* Apricot: secondary hue for the living background only, not for UI */
+  --accent-2: #e2915a;
+
+  --surface: #ffffff;
+  --surface-secondary: #f2f2ef;
+  --fill: rgba(28, 28, 30, 0.06);
+  --fill-strong: rgba(28, 28, 30, 0.1);
+  --accent-fill: rgba(10, 105, 101, 0.1);
+  --accent-fill-strong: rgba(10, 105, 101, 0.16);
+  --separator: rgba(28, 28, 30, 0.12);
+  --separator-strong: rgba(28, 28, 30, 0.22);
+
+  --shadow-1:
+    0 1px 2px rgba(20, 20, 18, 0.06), 0 1px 1px rgba(20, 20, 18, 0.04);
+  --shadow-2:
+    0 2px 6px rgba(20, 20, 18, 0.05), 0 8px 24px -6px rgba(20, 20, 18, 0.1);
+  --shadow-3:
+    0 4px 12px rgba(20, 20, 18, 0.06), 0 24px 48px -12px rgba(20, 20, 18, 0.18);
+
+  --material-thin: rgba(251, 251, 249, 0.62);
+  --material-regular: rgba(251, 251, 249, 0.82);
+  /* Large surfaces with controls over arbitrary content (the nav sheet). */
+  --material-thick: rgba(251, 251, 249, 0.93);
+  --material-edge: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  --material-border: rgba(28, 28, 30, 0.08);
+
+  --scrim: rgba(20, 20, 18, 0.32);
+  --focus-ring: #0a6965;
+}
+
+/* ---------- Dark ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg: #0b0b0c;
+    --bg-elevated: #161618;
+    --fg: #f5f5f7;
+    --fg-secondary: #a1a1a6;
+    --fg-tertiary: #99999d;
+
+    --accent: #4cc9bb;
+    --accent-hover: #6fd6ca;
+    --on-accent: #02211f;
+    --accent-2: #c97a46;
+
+    --surface: #161618;
+    --surface-secondary: #1f1f22;
+    --fill: rgba(245, 245, 247, 0.07);
+    --fill-strong: rgba(245, 245, 247, 0.12);
+    --accent-fill: rgba(76, 201, 187, 0.14);
+    --accent-fill-strong: rgba(76, 201, 187, 0.22);
+    --separator: rgba(245, 245, 247, 0.12);
+    --separator-strong: rgba(245, 245, 247, 0.24);
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-2:
+      0 2px 6px rgba(0, 0, 0, 0.4), 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+    --shadow-3:
+      0 4px 12px rgba(0, 0, 0, 0.45), 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+
+    --material-thin: rgba(22, 22, 24, 0.58);
+    --material-regular: rgba(22, 22, 24, 0.76);
+    --material-thick: rgba(22, 22, 24, 0.88);
+    --material-edge: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --material-border: rgba(245, 245, 247, 0.08);
+
+    --scrim: rgba(0, 0, 0, 0.5);
+    --focus-ring: #4cc9bb;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0b0b0c;
+  --bg-elevated: #161618;
+  --fg: #f5f5f7;
+  --fg-secondary: #a1a1a6;
+  --fg-tertiary: #99999d;
+
+  --accent: #4cc9bb;
+  --accent-hover: #6fd6ca;
+  --on-accent: #02211f;
+  --accent-2: #c97a46;
+
+  --surface: #161618;
+  --surface-secondary: #1f1f22;
+  --fill: rgba(245, 245, 247, 0.07);
+  --fill-strong: rgba(245, 245, 247, 0.12);
+  --accent-fill: rgba(76, 201, 187, 0.14);
+  --accent-fill-strong: rgba(76, 201, 187, 0.22);
+  --separator: rgba(245, 245, 247, 0.12);
+  --separator-strong: rgba(245, 245, 247, 0.24);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.4), 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+  --shadow-3:
+    0 4px 12px rgba(0, 0, 0, 0.45), 0 24px 48px -12px rgba(0, 0, 0, 0.65);
+
+  --material-thin: rgba(22, 22, 24, 0.58);
+  --material-regular: rgba(22, 22, 24, 0.76);
+  --material-thick: rgba(22, 22, 24, 0.88);
+  --material-edge: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --material-border: rgba(245, 245, 247, 0.08);
+
+  --scrim: rgba(0, 0, 0, 0.5);
+  --focus-ring: #4cc9bb;
+}
+
+/* ---------- Accessibility overrides ----------
+ * The selectors match the dark set's specificity (:root:not(...)) so the
+ * overrides win in dark mode too, not only in light. */
+
+/* Materials become solid. */
+@media (prefers-reduced-transparency: reduce) {
+  :root,
+  :root:not([data-theme="light"]),
+  [data-theme] {
+    --material-thin: var(--bg-elevated);
+    --material-regular: var(--bg-elevated);
+    --material-thick: var(--bg-elevated);
+    --material-thin-blur: none;
+    --material-regular-blur: none;
+  }
+}
+
+/* Solid surfaces with defined borders. */
+@media (prefers-contrast: more) {
+  :root,
+  :root:not([data-theme="light"]),
+  [data-theme] {
+    --fg-secondary: var(--fg);
+    --fg-tertiary: var(--fg);
+    --separator: var(--fg-secondary);
+    --separator-strong: var(--fg);
+    --material-thin: var(--bg-elevated);
+    --material-regular: var(--bg-elevated);
+    --material-thick: var(--bg-elevated);
+    --material-thin-blur: none;
+    --material-regular-blur: none;
+    --material-border: var(--fg);
+    --focus-ring: var(--fg);
+  }
+}

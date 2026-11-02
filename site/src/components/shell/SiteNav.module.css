@@ -1,0 +1,165 @@
+.bar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-nav);
+  height: var(--nav-height);
+}
+
+/*
+ * Scroll-edge effect: material that fades out below the bar instead of a hard
+ * divider. Always visible, including at the top of the page.
+ */
+.edge {
+  position: absolute;
+  inset: 0 0 calc(-1 * var(--space-5));
+  background: var(--material-regular);
+  -webkit-backdrop-filter: var(--material-regular-blur);
+  backdrop-filter: var(--material-regular-blur);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - var(--space-5)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - var(--space-5)),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.wordmark {
+  border-radius: var(--radius-xs);
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-size: var(--t-headline-size);
+  font-weight: 680;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity var(--duration-hover) var(--ease-out);
+}
+
+.wordmark:active {
+  opacity: 0.6;
+  transition-duration: var(--duration-press);
+}
+
+.desktop {
+  display: none;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.875rem;
+  border-radius: var(--radius-pill);
+  color: var(--fg-secondary);
+  font-size: var(--t-footnote-size);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out),
+    transform var(--duration-hover) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--fg);
+  background: var(--fill);
+}
+
+/* Feedback on pointer-down. */
+.link:active {
+  transform: scale(0.96);
+  transition-duration: var(--duration-press);
+}
+
+.active,
+.active:hover {
+  color: var(--fg);
+  background: transparent;
+}
+
+/* Shared pill behind the active link; slides between links (layoutId). */
+.indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--fill-strong);
+}
+
+.label {
+  position: relative;
+}
+
+.motion {
+  margin-inline-start: var(--space-1);
+}
+
+.resume {
+  /* A hair of separation from the links group. */
+  margin-inline-start: var(--space-1);
+}
+
+.mobile {
+  display: flex;
+}
+
+@media (min-width: 48rem) {
+  .desktop {
+    display: flex;
+  }
+  .mobile {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link:active {
+    transform: none;
+  }
+}
+
+/* Defined border instead of the fade. */
+@media (prefers-contrast: more) {
+  .edge {
+    bottom: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-bottom: 1px solid var(--fg);
+  }
+  .indicator {
+    box-shadow: inset 0 0 0 1px var(--fg);
+  }
+}
+
+/* Forced colors drop backgrounds; outline the active pill instead. */
+@media (forced-colors: active) {
+  .indicator {
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+}

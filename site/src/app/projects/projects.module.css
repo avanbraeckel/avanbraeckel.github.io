@@ -1,0 +1,103 @@
+/* Shared by /projects and the project pages. */
+.page {
+  padding-block: clamp(var(--space-7), 8vw, var(--space-9)) var(--section-space);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--container-narrow);
+  margin-bottom: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.title {
+  composes: t-display from global;
+}
+
+.lead {
+  font-size: clamp(1.1875rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.note {
+  font-size: var(--t-footnote-size);
+  color: var(--fg-secondary);
+}
+
+.stage {
+  margin-bottom: var(--section-space);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-2);
+  font-size: var(--t-footnote-size);
+  color: var(--fg-secondary);
+}
+
+/* Two-column prose blocks on project pages. */
+.details {
+  display: grid;
+  gap: clamp(var(--space-7), 5vw, var(--space-8));
+}
+
+.block {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 56rem) {
+  .block {
+    grid-template-columns: 16rem 1fr;
+    gap: var(--space-7);
+  }
+}
+
+.blockTitle {
+  font-size: var(--t-title3-size);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  font-weight: 650;
+}
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--container-narrow);
+  font-size: var(--t-body-size);
+  line-height: 1.6;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.prose strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-left: 1.1rem;
+}
+
+.list li::marker {
+  color: var(--fg-tertiary);
+}

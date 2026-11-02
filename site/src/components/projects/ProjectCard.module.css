@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #05070a;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+}
+
+.cover img {
+  transition: scale 600ms var(--ease-out);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover .cover img {
+    scale: 1.03;
+  }
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+}
+
+.meta {
+  font-size: var(--t-footnote-size);
+  font-weight: 500;
+  color: var(--fg-secondary);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: var(--t-title3-size);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  font-weight: 650;
+}
+
+.arrow {
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--accent);
+  transition: translate var(--duration-hover) var(--ease-out);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover .arrow {
+    translate: 0.2em 0;
+  }
+}
+
+.summary {
+  color: var(--fg-secondary);
+  font-size: var(--t-callout-size);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+@media (min-width: 48rem) {
+  .wide {
+    flex-direction: row;
+  }
+
+  /* Keep the cover's 16:9 so it isn't cropped; the text column sizes to it. */
+  .wide .media {
+    flex: 1.25;
+  }
+
+  .wide .body {
+    flex: 1;
+    justify-content: center;
+    padding: var(--space-7);
+  }
+}

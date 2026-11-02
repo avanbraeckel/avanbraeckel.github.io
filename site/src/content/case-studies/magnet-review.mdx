@@ -1,0 +1,43 @@
+## Context
+
+Magnet Forensics makes software for digital investigations, and their mission says it best: "Seek Justice. Protect the Innocent." Law enforcement and government agencies use it, as well as companies looking into fraud, misconduct, and IP theft. Magnet REVIEW is made for people who aren't forensics specialists. It's a web app where anyone working on a case can browse, search, and filter evidence right in their browser, and then tag and comment on items so their collaborators can see them right away.
+
+I spent the summer of 2022 on REVIEW as a Software Developer Co-op. I mostly worked from home, but the main office in Waterloo was always open whenever I wanted to come in, and it's a wonderful space.
+
+<FigureRow
+  ids={["magnet-waterloo-lobby", "magnet-waterloo-desk"]}
+  caption="The moss wall in the lobby, and a workstation at the Waterloo office"
+/>
+
+## My role
+
+REVIEW is built by three small teams, and mine was Taco Team, with five developers, one test specialist, a Kanban board, and me as the only co-op. I made a point of taking on work from both ends of the product. The backend is C# on .NET, split into microservices, and I had never written C# before. The frontend is React, and since I had a lot less frontend experience than backend, I set myself a goal of finishing at least two frontend tasks during the term. I ended up finishing four!
+
+Halfway through the summer, I noticed QA tickets were piling up on the board, so in between stories I started testing my teammates' changes and running the debriefs afterwards. I also volunteered to run our daily stand-up for all of July. My mentor gave me good feedback, along with one really useful note: I was keeping things moving so tightly that the meeting felt a bit rigid. Adding a sentence of context before asking for each person's update fixed most of that.
+
+## What I built
+
+Product details stay with Magnet, but here's what my work looked like:
+
+- **Redesigning the busiest page.** One of my frontend tasks was a major visual change to the most-visited page in the app, and it ended up being one of the highlights of a big release.
+- **UI work with the UX team.** I moved and restyled buttons, and added a new alert for an event that users needed to know about, working from the UX team's Figma designs. I even got to sit in on one of their usability testing sessions.
+- **Endpoints and report data.** I built new API endpoints and the logic behind them in the microservices, as well as backend logic that adds more useful information when a user generates a report.
+- **Better logging** in the services I worked on.
+- **Frontend tests** in Jest, with mocked requests, rendered components, and snapshots.
+- **Onboarding fixes.** The setup guide described an AWS console that didn't look like that anymore, so I rewrote the environment and EC2 instance steps as I went. Two full-time developers who started shortly after me got through setup without needing any help.
+
+<Figure id="magnet-waterloo-big-room" />
+
+In July, Magnet held Magnetathon, a three-day company-wide hackathon. I teamed up with four other co-ops I'd gotten to know at our weekly co-op game sessions, and we built a PDF-to-XML converter for one of Magnet's products, after a data source switched from supplying XML files to PDFs. Our hack was a success, and we were the first team to present at the showcase!
+
+At the end of August, Magnet brought employees from wherever they lived to Waterloo for Summer Jam, a week in the office with a big company event at Bingemans. My team ordered take-out for a group lunch on the patio one day, and went uptown for lunch together on another. It really showed how much Magnet cares about its people.
+
+## Stack
+
+- **Frontend:** React, JavaScript, Bootstrap, Jest, Vitest, npm
+- **Backend:** C#, .NET, MySQL, Kubernetes
+- **Tools:** Azure DevOps, Insomnia, Figma, Miro, Slack, VS Code
+
+## What I learned
+
+This was the term I stopped thinking of myself as just a backend developer. Learning C# from scratch and React from not much at the same time showed me that what really carries over is the habit of reading an unfamiliar codebase until it makes sense, not any one language. I also got into the habit of trying the less familiar tool when it doesn't cost much, like using Insomnia instead of Postman just so I'd know both. And running stand-up for a month taught me that a short meeting isn't always a useful one.

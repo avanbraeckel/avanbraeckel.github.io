@@ -1,0 +1,35 @@
+## Context
+
+NCR's Waterloo office works on extending and improving the company's banking software. At the centre of it is Tx Infinity API (TxI), the backbone of electronic transactions for a large U.S. bank, along with the Java microservices that each handle a specific part of a transaction call. I joined the Channel Services Platform Foundation group as a Software Engineering Intern in May 2021 and stayed until December. It was my first co-op, and all eight months were remote, from my first day to my last.
+
+## My role
+
+I got to spend the term on two very different teams.
+
+**Bion Team, May to September.** Bion worked through a Kanban board of incidents reported by other teams across the office. For each one, we figured out whether it was really a bug, tracked down the root cause, and fixed it, in whichever of NCR's repositories it lived. Most of the time that meant working in TxI, which is written in API Toolkit, a language NCR built in-house on top of Spring, YAML, and Swagger. Nobody outside the company uses it, so there was no Stack Overflow to lean on and not much documentation either. I learned it by reading the code and asking my team questions. For most of the biweekly sprint-end demos I attended, I also made Bion's slide and presented our summary to the other teams.
+
+**Falcon Team, September to December.** For the rest of the term, I joined a Scrum team that was starting a brand new project around how people use ATMs. I was eager to try something new, and since I already knew TxI from my time on Bion, I got up to speed quickly and started writing REST APIs right away. That knowledge was new to the rest of the team, so I ended up pair programming with my teammates to help with problems in their stories.
+
+## What I built
+
+The specifics belong to NCR, but here's an overview of the work.
+
+- **Fixing a year-old data-loss bug.** One incident had been on hold for about a year. Important data was being deleted, and several people had spent hours without finding out why. When it was assigned to me, I was stuck at first too, but after working through it with a few of my Bion teammates, we found the cause and fixed it.
+- **An environment generator.** To run TxI locally, you had to copy port numbers and service names by hand from a long list on the team's vRA cluster into your environment file. I wrote a Bash script that generates the whole file in a few seconds instead. Bion started using it, and I brought it with me to Falcon too.
+- **The Jira Helper Tool.** Several times a week, Bion had to update a "Customer Facing Next Steps" field on every open external incident, one ticket at a time. During the team's biweekly innovation session, I started building a Python and Flask API that sets a field on every ticket in a Jira filter at once. The office decided it was worth more time, so a summer intern took it on full-time, and I walked him through the code and kept answering his questions as he extended it. By the end of my term it was working locally, with just the Jenkins job for a shared Docker deployment left to do.
+- **A client portal for the hackathon.** For NCR's Global Hackathon in July, our group from Bion pitched a portal where the client could follow and discuss their Jira issues directly, instead of over email. My teammates got pulled onto urgent incidents, so I wrote most of it myself, building a set of APIs that let the client view and edit the issues that relate to them. It was a fun experience, and great practice writing APIs!
+- **Raising (and resolving) a validation gap.** While I was reworking the request body for one of Falcon's new APIs, I noticed that the validation system couldn't check that input consistently. I led the discussion with the team that owned validation, several product owners, and a systems software architect, and we got it resolved. Later on, I demoed the restructured request body, which supported changes to authentication, to our product owner.
+
+## Stack
+
+- **Languages:** Java, API Toolkit, Python, Bash
+- **Testing:** Cucumber, including end-to-end tests for Falcon's epics
+- **Infrastructure:** Docker, Kubernetes, vRA clusters, Jenkins
+- **Data:** DBeaver, against Elasticsearch, Redis, and Cassandra
+- **Workflow:** Postman, Jira, GitHub, Microsoft Teams
+
+## What I learned
+
+Six months of tracking down other people's bugs changed the way I write code. Now I tend to notice a possible issue while I'm writing it, instead of after a ticket comes in. Learning API Toolkit taught me how to get productive in a language with no community and very little documentation, which has been great practice for every unfamiliar codebase since. On Falcon, I got to experience Scrum firsthand, with story points, spikes, burndown charts, and retrospectives that actually changed the next sprint. Reviewing my teammates' pull requests every day also made me much more comfortable with git.
+
+Even though everything was remote, both teams made time for fun lunches with our webcams on, playing Skribbl.io, Codenames, and Jackbox, and both treated me like any other engineer on the team.

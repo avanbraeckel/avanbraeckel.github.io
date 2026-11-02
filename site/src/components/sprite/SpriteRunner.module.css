@@ -1,0 +1,134 @@
+.track {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mover,
+.gem {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+}
+
+.facing {
+  display: flex;
+}
+
+.gem {
+  bottom: var(--runner-gem-bottom);
+  left: var(--runner-gem-left);
+}
+
+/* Until the track is measured (and without JavaScript) the hero idles. */
+.run {
+  display: none;
+}
+
+.track[data-ready="true"] .run {
+  display: inline-block;
+}
+
+.track[data-ready="true"] .idle {
+  display: none;
+}
+
+/*
+ * One lap is out and back. Both halves step in whole art pixels; the facing
+ * flips exactly at the turn; the gem pops as the hero's centre reaches it
+ * (GEM_AT of the way out, so GEM_AT / 2 of the lap) and fades back in while
+ * the hero is near the far end of the return leg.
+ */
+.track[data-ready="true"] .mover {
+  animation: runner-move var(--runner-duration) steps(var(--runner-steps))
+    infinite;
+}
+
+.track[data-ready="true"] .facing {
+  animation: runner-face var(--runner-duration) step-end infinite;
+}
+
+.track[data-ready="true"] .gem {
+  animation: runner-gem var(--runner-duration) linear infinite;
+}
+
+.track[data-active="false"] * {
+  animation-play-state: paused;
+}
+
+@keyframes runner-move {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(var(--runner-distance));
+  }
+}
+
+@keyframes runner-face {
+  0% {
+    transform: scaleX(1);
+  }
+  50%,
+  100% {
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes runner-gem {
+  0%,
+  35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  39% {
+    opacity: 0;
+    transform: translateY(var(--runner-gem-lift));
+  }
+  86% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  92%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track[data-ready="true"] .mover,
+  .track[data-ready="true"] .facing,
+  .track[data-ready="true"] .gem {
+    animation: none;
+  }
+
+  .track[data-ready="true"] .run {
+    display: none;
+  }
+
+  .track[data-ready="true"] .idle {
+    display: inline-block;
+  }
+}
+
+/*
+ * Paused by the nav toggle (WCAG 2.2.2): same as reduced motion, driven by an
+ * attribute on <html> so it applies before hydration.
+ */
+:global(html[data-ambient-motion="paused"]) .track[data-ready="true"] .mover,
+:global(html[data-ambient-motion="paused"]) .track[data-ready="true"] .facing,
+:global(html[data-ambient-motion="paused"]) .track[data-ready="true"] .gem {
+  animation: none;
+}
+
+:global(html[data-ambient-motion="paused"]) .track[data-ready="true"] .run {
+  display: none;
+}
+
+:global(html[data-ambient-motion="paused"]) .track[data-ready="true"] .idle {
+  display: inline-block;
+}

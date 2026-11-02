@@ -1,0 +1,37 @@
+{
+  "player-idle": {
+    "frameWidth": 27,
+    "frameHeight": 31,
+    "frames": 4
+  },
+  "player-run": {
+    "frameWidth": 27,
+    "frameHeight": 31,
+    "frames": 6
+  },
+  "player-jump": {
+    "frameWidth": 27,
+    "frameHeight": 31,
+    "frames": 8
+  },
+  "slime": {
+    "frameWidth": 28,
+    "frameHeight": 14,
+    "frames": 8
+  },
+  "spider": {
+    "frameWidth": 31,
+    "frameHeight": 21,
+    "frames": 3
+  },
+  "gem": {
+    "frameWidth": 8,
+    "frameHeight": 8,
+    "frames": 10
+  },
+  "portal": {
+    "frameWidth": 24,
+    "frameHeight": 32,
+    "frames": 5
+  }
+}

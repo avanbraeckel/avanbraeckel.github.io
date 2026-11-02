@@ -1,0 +1,38 @@
+.sprite {
+  display: inline-block;
+  flex: none;
+  vertical-align: bottom;
+  background-repeat: no-repeat;
+  background-position: var(--sprite-still) 0;
+  /* Nearest-neighbour scaling keeps the art crisp at any whole-number scale. */
+  image-rendering: pixelated;
+}
+
+.sprite[data-playing="true"] {
+  animation: sprite-play var(--sprite-duration) steps(var(--sprite-steps))
+    infinite;
+}
+
+.flip {
+  transform: scaleX(-1);
+}
+
+@keyframes sprite-play {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--sprite-end) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprite[data-playing="true"] {
+    animation: none;
+  }
+}
+
+/* Paused by the nav toggle (WCAG 2.2.2): hold the still frame, like reduced motion. */
+:global(html[data-ambient-motion="paused"]) .sprite[data-playing="true"] {
+  animation: none;
+}

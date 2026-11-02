@@ -1,0 +1,905 @@
+{
+  "version": 1,
+  "images": {
+    "portrait": {
+      "id": "portrait",
+      "group": "general",
+      "kind": "portrait",
+      "alt": "Austin Van Braeckel smiling outdoors in a denim jacket, with green foliage behind him",
+      "caption": "Austin Van Braeckel",
+      "width": 425,
+      "height": 425,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoQABAAA4BaJbACdH8AEBd18z3oQAD+7FLQMeTZrnUhJrXhrHGkXRRWuuWj+Lgh1924khrkd3L9kdGgrQh1SgaohlyqGOvdePf4XTXwb62UEjfOUb9zulHS1mrM87bKODPgsajXMMFAQZT2uii8gAAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/portrait-425.751b53d063.avif",
+              "width": 425
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/portrait-425.751b53d063.webp",
+              "width": 425
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/portrait-425.751b53d063.webp"
+    },
+    "transient-screenshot": {
+      "id": "transient-screenshot",
+      "group": "general",
+      "kind": "screenshot",
+      "alt": "Transient title screen with a level select menu beside gameplay scenes of a character platforming through icy caverns",
+      "caption": "Transient, a 2D platformer",
+      "width": 1280,
+      "height": 640,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAgAA4BaJZQCdAERH0ytqoAA/vGmxgEr4ETed+9lNguxdVR4oycWTruEfH9JBkcRm3Zf8WDhdFp50CgSAAAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/transient-screenshot-640.9e0a697286.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/transient-screenshot-1280.9e0a697286.avif",
+              "width": 1280
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/transient-screenshot-640.9e0a697286.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/transient-screenshot-1280.9e0a697286.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/transient-screenshot-1280.9e0a697286.webp"
+    },
+    "logo-magnet-forensics": {
+      "id": "logo-magnet-forensics",
+      "group": "general",
+      "kind": "logo",
+      "alt": "Magnet Forensics logo",
+      "caption": "Magnet Forensics",
+      "width": 1920,
+      "height": 627,
+      "hasAlpha": true,
+      "blurDataURL": null,
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/logo-magnet-forensics-640.5953a0dc68.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/logo-magnet-forensics-1280.5953a0dc68.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/logo-magnet-forensics-1920.5953a0dc68.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/logo-magnet-forensics-640.5953a0dc68.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/logo-magnet-forensics-1280.5953a0dc68.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/logo-magnet-forensics-1280.5953a0dc68.webp"
+    },
+    "logo-ncr": {
+      "id": "logo-ncr",
+      "group": "ncr",
+      "kind": "logo",
+      "alt": "NCR logo",
+      "caption": "NCR Corporation",
+      "width": 1280,
+      "height": 368,
+      "hasAlpha": true,
+      "blurDataURL": null,
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/logo-ncr-640.04f0b01ea5.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/logo-ncr-1280.04f0b01ea5.avif",
+              "width": 1280
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/logo-ncr-640.04f0b01ea5.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/logo-ncr-1280.04f0b01ea5.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/logo-ncr-1280.04f0b01ea5.webp"
+    },
+    "magnet-waterloo-exterior": {
+      "id": "magnet-waterloo-exterior",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Modern four-storey glass and concrete office building under a blue sky with scattered clouds",
+      "caption": "Magnet Forensics headquarters in Waterloo",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoQAAwAA4BaJagCdAD61yrNmCkAAP4h2Y+fx4cG154dptu30KoHzjxVqgJXrvfwCyFe/7ie7Wtg3j5RGIwhquJQ3F5N8wzHEKEnAAAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-exterior-640.b07200208e.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-exterior-1280.b07200208e.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-exterior-1920.b07200208e.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-exterior-640.b07200208e.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-exterior-1280.b07200208e.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-exterior-1280.b07200208e.webp"
+    },
+    "magnet-waterloo-lobby": {
+      "id": "magnet-waterloo-lobby",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Office lobby with a living moss wall, a teal sofa and two yellow lounge chairs on a wooden floor",
+      "caption": "The lobby at the Waterloo office",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAwAA4BaJaACdAEfQczBU7sAAP7s8VrkfzATYn07+5fsQTjWiPveutgEsayNDoptmRxWPKlloTJKGT8go3cu7vC5C5yjfX885HU0YAA=",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-lobby-640.368022d70e.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-lobby-1280.368022d70e.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-lobby-1920.368022d70e.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-lobby-640.368022d70e.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-lobby-1280.368022d70e.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-lobby-1280.368022d70e.webp"
+    },
+    "magnet-waterloo-big-room": {
+      "id": "magnet-waterloo-big-room",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Large open event space with rows of white and black chairs, ceiling light panels and wall-mounted screens",
+      "caption": "The Big Room, the office's all-hands and event space",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAwAA4BaJYwAAxYDcd6X2pyAAP7u6bSKgsg/9HTqZGz8d7+zJvgEZVOjGOeAo/AvQdBBoawl88AzVGtsdDpGIqo6y4J1mzGycfEKJ3i+geAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-big-room-640.640f065efd.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-big-room-1280.640f065efd.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-big-room-1920.640f065efd.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-big-room-640.640f065efd.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-big-room-1280.640f065efd.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-big-room-1280.640f065efd.webp"
+    },
+    "magnet-waterloo-kitchen": {
+      "id": "magnet-waterloo-kitchen",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Office kitchen with a long white island, pendant lights and a hexagon-tiled backsplash",
+      "caption": "The kitchen off the Big Room",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwAgCdASoQAAwAA4BaJQBOgMXwhPHTQqdMQAD+0PJSpA4YTBgXdjvgtc/60P03oWfMYmtBHmym45gTsks8mKhyhXraGO662nbYT+5l3CSwzKnzkchSu+Bgt39uZRH5Fj9FnATXGopaIAAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-kitchen-640.6fafca0d64.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-kitchen-1280.6fafca0d64.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-kitchen-1920.6fafca0d64.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-kitchen-640.6fafca0d64.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-kitchen-1280.6fafca0d64.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-kitchen-1280.6fafca0d64.webp"
+    },
+    "magnet-waterloo-games": {
+      "id": "magnet-waterloo-games",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Games area with a pool table, a foosball table and a ping pong table beneath hexagonal ceiling lights",
+      "caption": "The games area in the Big Room",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAQCdASoQAAwAA4BaJQBdgBZoHEd4AAD+7DEpigcB2nYUIcVJ2/ynJuBh6J4cbsPAbAvZq4a84OxZ7pnMFx2PyAe+ZY2EAEXwOa6lUxawL6DL7jRocUAAAAA=",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-games-640.a2211792d8.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-games-1280.a2211792d8.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-games-1920.a2211792d8.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-games-640.a2211792d8.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-games-1280.a2211792d8.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-games-1280.a2211792d8.webp"
+    },
+    "magnet-waterloo-desk": {
+      "id": "magnet-waterloo-desk",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Curved office workstation with two monitors in an open-plan area with large windows",
+      "caption": "A workstation at the Waterloo office",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoQAAwAA4BaJQBOgCMDBcvZo3gAAPx5PNgLJfC3IQ31tLCH48Z9ES94P+b0eXDoX0QdMtjqoqxrltvc764mMvEEOoUAGGs+Lgd6wF9USutmei7U9hoAAA==",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-desk-640.b795e393f4.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-desk-1280.b795e393f4.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-desk-1920.b795e393f4.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-desk-640.b795e393f4.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-desk-1280.b795e393f4.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-desk-1280.b795e393f4.webp"
+    },
+    "magnet-waterloo-wall-logo": {
+      "id": "magnet-waterloo-wall-logo",
+      "group": "magnet-review",
+      "kind": "photo",
+      "alt": "Large gold Magnet Forensics logo mounted on a dark blue-grey wall",
+      "caption": "Magnet Forensics branding at the Waterloo office",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAwAgCdASoQAAwAA4BaJYwC7AEfcf4YqNCNAAD4RfFxY/0SgcBehysJ3zpOeOJjEOC6PeNWuffJJgAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-wall-logo-640.034a4d3d79.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-wall-logo-1280.034a4d3d79.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-waterloo-wall-logo-1920.034a4d3d79.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-waterloo-wall-logo-640.034a4d3d79.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-waterloo-wall-logo-1280.034a4d3d79.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-waterloo-wall-logo-1280.034a4d3d79.webp"
+    },
+    "magnet-ottawa-entrance": {
+      "id": "magnet-ottawa-entrance",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Office entrance with a silver Magnet Forensics logo on a white wall above two grey lounge chairs and a potted plant",
+      "caption": "The entrance to the Ottawa office",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAQCdASoQAAwAA4BaJZQAAs3JnugAAP6yDunC3qZdbeiYAwFcZAGXK6X73AODDVfmzAapP8KKmCUDJDIwF+7OfW9R/Qf5ODLwAA==",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-entrance-640.c3ea3fd33f.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-entrance-1280.c3ea3fd33f.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-entrance-1920.c3ea3fd33f.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-entrance-640.c3ea3fd33f.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-entrance-1280.c3ea3fd33f.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-entrance-1280.c3ea3fd33f.webp"
+    },
+    "magnet-ottawa-meeting-room": {
+      "id": "magnet-ottawa-meeting-room",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Meeting room with a large table and a mural reading \"Impact people's lives by uncovering the truth and empowering others to make a difference\"",
+      "caption": "A meeting room at the Ottawa office",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoQAAwAA4BaJYwCdAEIarSm0xAA9p1FHtBcqIztMXx6mQqFMroUm9hZbYdOvS4XZGyoaNhrNh9NjGLnhT4YCiu25qBJS+A7isRXAAAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-meeting-room-640.78b41c2b1e.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-meeting-room-1280.78b41c2b1e.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-meeting-room-1920.78b41c2b1e.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-meeting-room-640.78b41c2b1e.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-meeting-room-1280.78b41c2b1e.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-meeting-room-1280.78b41c2b1e.webp"
+    },
+    "magnet-ottawa-office": {
+      "id": "magnet-ottawa-office",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Open-plan office with a lounge area of grey armchairs on a blue rug in front of rows of desks",
+      "caption": "The Ottawa office workspace",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAABQAgCdASoQAAwAA4BaJbACdEf/gWYOD79waUAA4DGM9/AWA7hKkTislv5ICbefd5exPeubFTp71g5pNlV+uzv5vqlr7KbXZR5YCHpGv/Z5n9Ke1Yn0MWsA9/dUvi6ULndMAAAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-office-640.e11d4a4cec.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-office-1280.e11d4a4cec.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-office-1920.e11d4a4cec.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-office-640.e11d4a4cec.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-office-1280.e11d4a4cec.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-office-1280.e11d4a4cec.webp"
+    },
+    "magnet-ottawa-sign": {
+      "id": "magnet-ottawa-sign",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Large multicoloured letters spelling OTTAWA in front of downtown buildings at dusk",
+      "caption": "The OTTAWA sign downtown",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABwAgCdASoQAAwAA4BaJaACdH8AgjTbls4CA/4AAP7r+uOFlmnX7KAQuqEtDASI/jziaknKJt0e6yw0y3JTx9ChcLlyfj8jBaeU8AAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-sign-640.9648e75ea7.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-sign-1280.9648e75ea7.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-sign-1920.9648e75ea7.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-sign-640.9648e75ea7.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-sign-1280.9648e75ea7.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-sign-1280.9648e75ea7.webp"
+    },
+    "magnet-ottawa-parliament": {
+      "id": "magnet-ottawa-parliament",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Gothic Revival parliament building with green copper roofs under a clear blue sky",
+      "caption": "Parliament Hill",
+      "width": 1920,
+      "height": 1146,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAoAA4BaJbACdAEYERcn6hMMAM4wdjatbSPltZjgGqHPPHhR79ZVUqzk2J5wwzsU+e3Abt3AGKIAFY5holqrd28QoVSgAAA=",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-parliament-640.7f762f21b2.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-parliament-1280.7f762f21b2.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-parliament-1920.7f762f21b2.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-parliament-640.7f762f21b2.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-parliament-1280.7f762f21b2.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-parliament-1280.7f762f21b2.webp"
+    },
+    "magnet-ottawa-basilica": {
+      "id": "magnet-ottawa-basilica",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Giant bronze spider sculpture in a plaza in front of a cathedral with twin silver spires",
+      "caption": "Maman and the Notre-Dame Cathedral Basilica",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAwAA4BaJbACdAEQaGNbp0FgAP7NjxEn0zqM8FfGvXog9waSlHV+qN3Dt3yVyqaazUd4D7bfLYr4Xh6OeJ1NkLiDDm46P/ruowejh4HY7O4gbCvNhSMAAAA=",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-basilica-640.c25878117c.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-basilica-1280.c25878117c.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-basilica-1920.c25878117c.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-basilica-640.c25878117c.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-basilica-1280.c25878117c.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-basilica-1280.c25878117c.webp"
+    },
+    "magnet-ottawa-river": {
+      "id": "magnet-ottawa-river",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "View across a river to a city skyline on a sunny day, with rocks and trees on the near shore",
+      "caption": "The Ottawa River",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAwAA4BaJbACdAEO1AvaXkAA8nNje34XQDvW9Dl73Wh7vo7QcTcDiH2Y8LFjJSseg7sURdvt5n1jjX/4NiJoCo+7sp1bv8AAAA==",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-river-640.1932dede37.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-river-1280.1932dede37.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/magnet-ottawa-river-1920.1932dede37.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-river-640.1932dede37.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-river-1280.1932dede37.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-river-1280.1932dede37.webp"
+    },
+    "magnet-ottawa-tulips": {
+      "id": "magnet-ottawa-tulips",
+      "group": "magnet-axiom-cyber",
+      "kind": "photo",
+      "alt": "Red and pink tulips in bloom in a garden bed",
+      "caption": "Tulips in bloom in Ottawa",
+      "width": 1280,
+      "height": 1707,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYgCsBagBqAspUf2Ec6reYAD+49/ytTunkw7sPxWlWTV/QXGYPB+PkbdSxudzujkm7bq9QFDIh3h18SbIekvB9zOVEzLY/kV9fCFYibE71z91GSEyX68a203BpPddoZkhFZLAdFHnWD8y6WD1pamcwAMJbfLTjvhhPwAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-tulips-640.715e884370.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-tulips-1280.715e884370.avif",
+              "width": 1280
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/magnet-ottawa-tulips-640.715e884370.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/magnet-ottawa-tulips-1280.715e884370.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/magnet-ottawa-tulips-1280.715e884370.webp"
+    },
+    "about-bookshelf": {
+      "id": "about-bookshelf",
+      "group": "general",
+      "kind": "photo",
+      "alt": "Three white bookshelves packed with manga box sets and volumes, video games, and graphic novels, with an acoustic and an electric guitar on stands beside them",
+      "caption": "My shelves, which double as my background on work calls",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoQAAwAA4BaJQBOgBk39vZXIAAA/etHiWulvKrMiZq81F/hyUP/T1XdBuFJrGp8gye6PEubRYNuEzegX6JMdeZ6aL3fj2KSsZAh40asICZ/YtAA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/about-bookshelf-640.edadfbc8e3.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/about-bookshelf-1280.edadfbc8e3.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/about-bookshelf-1920.edadfbc8e3.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/about-bookshelf-640.edadfbc8e3.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/about-bookshelf-1280.edadfbc8e3.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/about-bookshelf-1280.edadfbc8e3.webp"
+    },
+    "about-watches": {
+      "id": "about-watches",
+      "group": "general",
+      "kind": "photo",
+      "alt": "An open wooden watch box holding ten watches, including mechanical, Eco-Drive, and digital G-Shock models, on leather, nylon, and steel straps",
+      "caption": "My humble collection so far. I’m saving up for a few really cool pieces!",
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoQAAwAA4BaJZQCdAYqXvOkLX6AAP6f6g3H+DnvwhQx84ivJi+dM/1ZgIMpBB7ZSpnKra6rZZKL8IRNwK038g7eXz0SbOh0LASNGfLCZkWNUDiUoARmug2OXfbuNOgA",
+      "sources": [
+        {
+          "type": "image/avif",
+          "srcSet": [
+            {
+              "src": "/media/about-watches-640.87d2411db6.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/about-watches-1280.87d2411db6.avif",
+              "width": 1280
+            },
+            {
+              "src": "/media/about-watches-1920.87d2411db6.avif",
+              "width": 1920
+            }
+          ]
+        },
+        {
+          "type": "image/webp",
+          "srcSet": [
+            {
+              "src": "/media/about-watches-640.87d2411db6.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/about-watches-1280.87d2411db6.webp",
+              "width": 1280
+            }
+          ]
+        }
+      ],
+      "fallback": "/media/about-watches-1280.87d2411db6.webp"
+    }
+  }
+}

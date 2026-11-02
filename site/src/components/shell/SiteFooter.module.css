@@ -1,0 +1,57 @@
+.footer {
+  position: relative;
+  margin-top: var(--section-space);
+  padding-block: var(--space-6)
+    calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--separator);
+  color: var(--fg-secondary);
+  font-size: var(--t-footnote-size);
+  line-height: 1.4;
+}
+
+/* The runner stands on the footer's top border, in the space above it. */
+.lane {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  /* Comfortable touch target without visual padding. */
+  min-height: 2.75rem;
+}
+
+.link:hover {
+  color: var(--fg);
+}
+
+.icon {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+@media (max-width: 47.9375rem) {
+  .inner {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}

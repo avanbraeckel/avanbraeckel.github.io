@@ -1,0 +1,22 @@
+/*
+ * Shared-element morph between a timeline card's art and the case-study hero
+ * (React <ViewTransition name share="experience-morph">). The group moves and
+ * resizes; the two snapshots cross-fade, cropped to the group so the 4:3 card
+ * and 21:9 hero don't stretch. Reduced motion is handled globally in
+ * shell.css (all view-transition animations off).
+ */
+::view-transition-group(.experience-morph) {
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+::view-transition-old(.experience-morph),
+::view-transition-new(.experience-morph) {
+  height: 100%;
+  object-fit: cover;
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}

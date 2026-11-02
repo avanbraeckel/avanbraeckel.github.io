@@ -1,0 +1,161 @@
+@import "../design/tokens.css";
+@import "../design/typography.css";
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 100%;
+  scroll-padding-top: var(--space-8);
+  interpolate-size: allow-keywords;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--t-body-size);
+  line-height: 1.5;
+  letter-spacing: -0.006em;
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ease light/dark switches instead of an abrupt brightness jump. */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition:
+      background-color 400ms ease,
+      color 400ms ease;
+  }
+
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  display: inline-block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 650;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+p,
+li {
+  overflow-wrap: break-word;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent-fill-strong);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--separator);
+}
+
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ---------- Utilities ---------- */
+.visually-hidden,
+.visually-hidden-focusable:not(:focus, :focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/*
+ * Materials: translucent fill + backdrop blur + a bright top edge.
+ * Use thin for small floating controls, regular for bars and sheets.
+ * Never place one material on top of another.
+ */
+.material-thin,
+.material-regular {
+  border: 1px solid var(--material-border);
+}
+
+.material-thin {
+  background: var(--material-thin);
+  -webkit-backdrop-filter: var(--material-thin-blur);
+  backdrop-filter: var(--material-thin-blur);
+  box-shadow: var(--material-edge), var(--shadow-1);
+}
+
+.material-regular {
+  background: var(--material-regular);
+  -webkit-backdrop-filter: var(--material-regular-blur);
+  backdrop-filter: var(--material-regular-blur);
+  box-shadow: var(--material-edge), var(--shadow-2);
+}

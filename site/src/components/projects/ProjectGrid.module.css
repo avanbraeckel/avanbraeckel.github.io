@@ -1,0 +1,9 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(var(--space-4), 2.5vw, var(--space-6));
+}
+
+.single {
+  display: grid;
+}

@@ -1,0 +1,30 @@
+.section {
+  padding-block: var(--section-space);
+  scroll-margin-top: var(--space-8);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--container-narrow);
+}
+
+.center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  color: var(--fg);
+}
+
+.description {
+  color: var(--fg-secondary);
+  font-size: clamp(var(--t-body-size), 1rem + 0.35vw, 1.25rem);
+}
+
+.content {
+  margin-top: clamp(var(--space-6), 4vw, var(--space-7));
+}

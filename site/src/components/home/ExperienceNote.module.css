@@ -1,0 +1,25 @@
+.note {
+  padding-bottom: var(--section-space);
+}
+
+.inner {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--separator);
+}
+
+.title {
+  font-size: var(--t-title3-size);
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  font-weight: 650;
+}
+
+.body {
+  max-width: 38rem;
+  font-size: clamp(var(--t-body-size), 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.55;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}

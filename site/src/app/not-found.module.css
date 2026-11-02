@@ -1,0 +1,55 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  min-height: 70vh;
+  justify-content: center;
+  padding-block: clamp(var(--space-7), 8vw, var(--space-9));
+}
+
+.code {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 3rem + 10vw, 9rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 34rem;
+  font-size: clamp(1.1875rem, 1rem + 0.6vw, 1.375rem);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--fg-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.scene {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-6);
+  margin-bottom: var(--space-2);
+}
+
+/* One moving sprite at a time: the hero idles here, so the footer runner rests. */
+:global(body:has([data-runner-parked])) :global([data-sprite-runner]) {
+  display: none;
+}

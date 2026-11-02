@@ -1,0 +1,409 @@
+.player {
+  /* The frame around the game; matches the game's dark scenes. */
+  --player-bg: #0a0a0c;
+  /* CheerpJ's notice strip is white; the frame's bottom band continues it. */
+  --notice-band: #fff;
+  --band: var(--radius-sm);
+  margin: 0;
+}
+
+.screen {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--player-bg);
+  box-shadow:
+    var(--shadow-3),
+    0 0 0 1px var(--separator);
+}
+
+/*
+ * Playing: the frame hugs the game. CheerpJ's license notice is the bottom
+ * strip of the display; a band of the same white below it carries the
+ * rounded corners, so the notice reads as the frame's caption bar and is
+ * never clipped by the radius (band height >= radius).
+ */
+.screen[data-active] {
+  aspect-ratio: auto;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0 0 var(--band);
+  border-radius: var(--band);
+  background: linear-gradient(
+    to top,
+    var(--notice-band) var(--band),
+    var(--player-bg) var(--band)
+  );
+}
+
+.screen:fullscreen {
+  width: 100%;
+  max-width: none;
+  align-items: center;
+  padding: 0;
+  border-radius: 0;
+  background: var(--player-bg);
+}
+
+@supports (corner-shape: squircle) {
+  .screen:not(:fullscreen, [data-active]) {
+    corner-shape: squircle;
+    border-radius: calc(var(--radius-lg) * 1.6);
+  }
+}
+
+.poster {
+  position: absolute;
+  inset: 0;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    60% 70% at 50% 55%,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.15) 70%,
+    transparent
+  );
+}
+
+.control {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: #f5f5f7;
+}
+
+.play {
+  display: grid;
+  place-items: center;
+  width: clamp(3.5rem, 9vw, 5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.35);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out);
+}
+
+.play:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+/* Feedback on press, not release. */
+.play:active {
+  transform: scale(0.94);
+  transition-duration: var(--duration-press);
+}
+
+.play:focus-visible {
+  outline: var(--focus-ring-width) solid #fff;
+  outline-offset: 3px;
+}
+
+.playIcon {
+  width: 42%;
+  height: 42%;
+  translate: 6% 0;
+}
+
+.status {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  /* Dark enough for 4.5:1 over the brightest crop of the poster. */
+  background: rgba(0, 0, 0, 0.65);
+  font-size: var(--t-footnote-size);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(245, 245, 247, 0.9);
+}
+
+/* The game: fixed native size, scaled as a whole (keyboard only, so the
+   transform does not affect input). */
+.stage {
+  position: relative;
+  flex-shrink: 0;
+  /* Focused by script only (never a Tab stop), to keep place when the play
+     button is replaced. */
+  outline: none;
+}
+
+/* A viewport onto the display that starts below the Java title bar; the
+   display is shifted up inside it (see transientRuntime.ts). */
+.slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transform-origin: 0 0;
+  /* Fills the display's empty sides. Set here, not on CheerpJ's display
+     element: the notice is painted behind that element's background. */
+  background: var(--player-bg);
+}
+
+/* Crisp pixels when fullscreen scales the game up. */
+.slot canvas {
+  image-rendering: pixelated;
+}
+
+/* Overlays cover the game area only, never the notice strip below it. */
+.overlay {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--game-height, 100%);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  overflow: auto;
+  /* Opaque: covers CheerpJ's own status text while loading. */
+  background: var(--player-bg);
+  color: #f5f5f7;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: min(100%, 15rem);
+}
+
+.loadingLabel {
+  font-size: var(--t-headline-size, 1.0625rem);
+  font-weight: 600;
+}
+
+.progress {
+  height: 4px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transition: transform 250ms linear;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-1);
+  padding: 0;
+  list-style: none;
+  font-size: var(--t-footnote-size);
+  color: rgba(245, 245, 247, 0.45);
+}
+
+.steps li::before {
+  content: "○";
+  display: inline-block;
+  width: 1.25em;
+}
+
+.steps li[data-state="current"] {
+  color: #f5f5f7;
+}
+
+.steps li[data-state="current"]::before {
+  content: "●";
+  color: var(--accent);
+}
+
+.steps li[data-state="done"] {
+  color: rgba(245, 245, 247, 0.7);
+}
+
+.steps li[data-state="done"]::before {
+  content: "✓";
+}
+
+.controls {
+  width: min(100%, 20rem);
+  font-size: var(--t-footnote-size);
+}
+
+.controlsTitle {
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  color: rgba(245, 245, 247, 0.7);
+}
+
+.controlsList {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.controlsRow dd {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.controls kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  border-radius: var(--radius-xs);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.18);
+  font-family: var(--font-sans);
+  font-size: var(--t-caption-size);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.warning {
+  margin-top: var(--space-3);
+  color: #f3c08f;
+  line-height: 1.6;
+}
+
+.controlsOverlay {
+  background: rgba(5, 7, 10, 0.9);
+  cursor: pointer;
+}
+
+.dismissHint {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: var(--t-caption-size);
+  color: rgba(245, 245, 247, 0.55);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 24rem;
+  text-align: center;
+}
+
+.messageTitle {
+  font-weight: 600;
+}
+
+.messageBody {
+  font-size: var(--t-footnote-size);
+  color: rgba(245, 245, 247, 0.75);
+}
+
+.messageActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.exitFullscreen {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(40, 40, 44, 0.7);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.credit {
+  font-size: var(--t-footnote-size);
+  color: var(--fg-secondary);
+}
+
+.leaveHint {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.credit a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.barActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  /* Plain small buttons: pull their padding out so the labels line up with
+     the player's edges (and with the credit when the bar wraps). */
+  margin-inline: -0.875rem;
+}
+
+@media (max-width: 30rem) {
+  .status {
+    font-size: var(--t-caption-size);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play,
+  .progressFill {
+    transition: none;
+  }
+
+  .play:active {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .play {
+    background: rgba(40, 40, 44, 0.95);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .overlay {
+    background: var(--player-bg);
+  }
+}

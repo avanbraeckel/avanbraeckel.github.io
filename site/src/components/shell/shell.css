@@ -1,0 +1,106 @@
+/*
+ * App shell globals: imported once by the root layout.
+ */
+
+:root {
+  --nav-height: 3.25rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-height) + var(--space-4));
+}
+
+body {
+  /*
+   * Own stacking context, so the fixed living background (z-index: -1)
+   * paints above the body's background instead of behind it.
+   */
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+#main {
+  flex: 1 0 auto;
+  /* Content starts below the fixed bar, then scrolls under it. */
+  padding-top: var(--nav-height);
+}
+
+#main:focus {
+  outline: none;
+}
+
+/* ---------- Page transitions (React <ViewTransition>) ---------- */
+
+/* Clicks during a transition reach the live page instead of the overlay. */
+::view-transition {
+  pointer-events: none;
+}
+
+/*
+ * The nav bar, scrim, and sheet stay put and live (their own animations keep
+ * running) above the fading page, in their on-page stacking order.
+ */
+::view-transition-group(site-nav),
+::view-transition-group(nav-scrim),
+::view-transition-group(nav-sheet) {
+  animation: none;
+}
+
+::view-transition-group(site-nav) {
+  z-index: 2;
+}
+
+::view-transition-group(nav-scrim) {
+  z-index: 3;
+}
+
+::view-transition-group(nav-sheet) {
+  z-index: 4;
+}
+
+::view-transition-old(site-nav),
+::view-transition-old(nav-scrim),
+::view-transition-old(nav-sheet) {
+  display: none;
+}
+
+::view-transition-new(site-nav),
+::view-transition-new(nav-scrim),
+::view-transition-new(nav-sheet) {
+  animation: none;
+}
+
+/*
+ * Page content fades in over the persistent background. The old page is
+ * dropped rather than cross-faded: its snapshot is taken at the old scroll
+ * position, so keeping it on screen while the new page starts at the top
+ * would either slide it or show the wrong part of it.
+ */
+::view-transition-group(.page-fade) {
+  animation: none;
+}
+
+::view-transition-old(.page-fade) {
+  display: none;
+}
+
+::view-transition-new(.page-fade) {
+  animation: 220ms var(--ease-out) both shell-fade-in;
+}
+
+@keyframes shell-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

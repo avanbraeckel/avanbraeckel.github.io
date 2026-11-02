@@ -1,0 +1,145 @@
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-top: clamp(var(--space-6), 5vw, var(--space-8));
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: clamp(var(--space-6), 5vw, var(--space-8));
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-xs);
+}
+
+.backIcon {
+  transform: scaleX(-1);
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .back:hover .backIcon {
+    transform: scaleX(-1) translateX(3px);
+  }
+}
+
+.back:active {
+  opacity: 0.6;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  color: var(--accent);
+}
+
+.title {
+  margin: 0;
+  color: var(--fg);
+}
+
+.role {
+  margin: var(--space-2) 0 0;
+  color: var(--fg-secondary);
+  font-weight: 500;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) clamp(var(--space-6), 5vw, var(--space-8));
+  margin: clamp(var(--space-6), 4vw, var(--space-7)) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--separator);
+}
+
+.facts dt {
+  margin-bottom: var(--space-1);
+  color: var(--fg-tertiary);
+  font-weight: 500;
+}
+
+.facts dd {
+  margin: 0;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.muted {
+  color: var(--fg-secondary);
+  font-weight: 400;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coverWrap {
+  margin-top: clamp(var(--space-6), 5vw, var(--space-8));
+}
+
+/* ---------- Body ---------- */
+
+.body {
+  padding-block: clamp(var(--space-7), 7vw, var(--space-9));
+}
+
+/* ---------- Pager ---------- */
+
+.pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  padding-bottom: var(--section-space);
+}
+
+@media (max-width: 35.99rem) {
+  .pager {
+    grid-template-columns: 1fr;
+  }
+
+  .pager > span[aria-hidden] {
+    display: none;
+  }
+}
+
+.pagerCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.newer {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pagerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-bottom: var(--space-1);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.pagerTitle {
+  color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backIcon {
+    transition: none;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
