@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one deployment at a time; let an in-progress production deploy finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - uses: actions/configure-pages@v6
+
+      - run: npm ci
+
+      # Encoded images are content-addressed (file names hash the source bytes
+      # and encoder settings), so a restored cache only skips work: the script
+      # re-encodes anything missing and prunes anything stale.
+      - name: Cache optimized images
+        uses: actions/cache@v5
+        with:
+          path: site/public/media
+          key: media-${{ runner.os }}-${{ hashFiles('site/media-sources.json', 'site/scripts/optimize-images.mjs') }}
+          restore-keys: media-${{ runner.os }}-
+
+      # The Transient zip is committed (assets/ or archive/transient/); prebuild
+      # extracts it. Run it explicitly so a missing zip fails with a clear step.
+      - name: Prepare Transient
+        run: node scripts/prepare-transient.mjs
+
+      - run: npm run build
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
