@@ -20,48 +20,54 @@ Credits:
 		Responsive Tools (github.com/ajlkn/responsive-tools)
 
 		---
-		## React App Development and Deployment
+		## Site Development and Deployment
 
 		This repository now hosts:
-		- legacy static website content at the root (`index.html`, `assets/`, etc.)
-		- a React app in `react-app/`
+		- the new site in `site/` (Next.js + React, exported as static files)
+		- the original reports, photos and a copy of the legacy site in `archive/` (not deployed)
+		- legacy static website content at the root (`index.html`, `assets/`, etc.) and the old React app in `react-app/`, kept until the migration is signed off
 
-		### 1) Run React app locally
+		### 1) Run the site locally
 
-		1. `cd react-app`
+		1. `cd site`
 		2. `npm install` (only first time or after `package.json` changes)
+		3. `npm run dev`
+
+		Then open: `http://localhost:3000`
+
+		The dev server reloads as you edit. Use npm 10 or newer (check with `npm -v`).
+
+		### 2) Preview the production build locally
+
+		1. `cd site`
+		2. `npm run build`
 		3. `npm start`
 
 		Then open: `http://localhost:3000`
 
-		### 2) Build React app for production
+		This serves exactly what GitHub Pages will serve. Use it to test the in-browser Transient player, since it needs the built files.
+		The first build takes a minute or two because it optimizes the images.
+		Build output appears in `site/out/`.
 
-		1. `cd react-app`
-		2. `npm run build`
+		### 3) Run tests and checks
 
-		Build output appears in `react-app/build/`.
+		1. `cd site`
+		2. `npm test` (Vitest, single run; `npm run test:watch` to keep it running)
+		3. `npm run lint`, `npm run typecheck` and `npm run format:check`
 
-		### 3) Deploy to GitHub Pages via `gh-pages`
+		### 4) Deploy to GitHub Pages via GitHub Actions
 
-		This repository uses the `gh-pages` branch as the live site source.
-
-		1. Ensure `react-app/package.json` includes:
-			- `"homepage": "https://avanbraeckel.github.io"`
-			- `"predeploy": "npm run build"`
-			- `"deploy": "gh-pages -d build"`
-		2. `cd react-app`
-		3. `npm install --save-dev gh-pages` (once)
-		4. `npm run deploy`
-
-		After deployment, GitHub Pages serves the generated files from `gh-pages`.
-
-		### 4) Confirm GitHub Pages settings
+		This repository uses GitHub Actions as the live site source (`.github/workflows/deploy.yml`).
 
 		1. In GitHub, go to `Settings` -> `Pages`.
-		2. Set `Branch` to `gh-pages` and `Folder` to `/ (root)`.
-		3. Save. Wait a minute, then visit `https://avanbraeckel.github.io`.
+		2. Set `Source` to `GitHub Actions`, then save.
+		3. Push to `master`. The workflow builds `site/` and publishes `site/out/`.
+
+		Wait a minute, then visit `https://avanbraeckel.github.io`.
+		The old `gh-pages` branch and `npm run deploy` flow are no longer used.
 
 		### 5) Keep old site files safe
 
-		The existing website content remains available on `master` and in `backup-static-site` branch.
+		The original reports (as PDFs), full-size photos, the Transient zip and a runnable copy of the legacy site are in `archive/` (see `archive/README.md`).
+		The existing website content also remains available on `master` and in `backup-static-site` branch.
 		You can restore or repurpose them anytime.
