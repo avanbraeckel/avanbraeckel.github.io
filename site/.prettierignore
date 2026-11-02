@@ -1,0 +1,6 @@
+.next/
+out/
+.screenshots/
+coverage/
+package-lock.json
+next-env.d.ts

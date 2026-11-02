@@ -1,0 +1,57 @@
+{
+  "name": "site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/prepare-transient.mjs --optional",
+    "dev": "next dev",
+    "prebuild": "node scripts/optimize-images.mjs && node scripts/prepare-transient.mjs",
+    "build": "next build",
+    "start": "serve out",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "screenshot": "node scripts/screenshot.mjs",
+    "a11y": "node scripts/a11y-audit.mjs",
+    "sprites": "node scripts/extract-sprites.mjs"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.4.3",
+    "motion": "^14.9.0",
+    "next": "16.4.3",
+    "radix-ui": "^1.8.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "eslint-config-prettier": "^10.1.8",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.64.1",
+    "prettier": "^3.9.10",
+    "serve": "^14.2.6",
+    "sharp": "^0.35.5",
+    "typescript": "^5",
+    "vitest": "^4.1.12",
+    "vitest-axe": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

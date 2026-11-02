@@ -1,0 +1,170 @@
+[
+  {
+    "id": "portrait",
+    "src": "archive/images/portrait.jpg",
+    "group": "general",
+    "kind": "portrait",
+    "alt": "Austin Van Braeckel smiling outdoors in a denim jacket, with green foliage behind him",
+    "caption": "Austin Van Braeckel"
+  },
+  {
+    "id": "transient-screenshot",
+    "src": "archive/images/TransientPic.jpg",
+    "group": "general",
+    "kind": "screenshot",
+    "alt": "Transient title screen with a level select menu beside gameplay scenes of a character platforming through icy caverns",
+    "caption": "Transient, a 2D platformer"
+  },
+  {
+    "id": "logo-magnet-forensics",
+    "src": "archive/images/Magnet1/MagnetForensicsLogoWhite.png",
+    "group": "general",
+    "kind": "logo",
+    "alt": "Magnet Forensics logo",
+    "caption": "Magnet Forensics"
+  },
+  {
+    "id": "logo-ncr",
+    "src": "archive/images/NCR/ncr-logo.png",
+    "group": "ncr",
+    "kind": "logo",
+    "alt": "NCR logo",
+    "caption": "NCR Corporation"
+  },
+  {
+    "id": "magnet-waterloo-exterior",
+    "src": "archive/images/Magnet1/Exterior.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Modern four-storey glass and concrete office building under a blue sky with scattered clouds",
+    "caption": "Magnet Forensics headquarters in Waterloo"
+  },
+  {
+    "id": "magnet-waterloo-lobby",
+    "src": "archive/images/Magnet1/Lobby2.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Office lobby with a living moss wall, a teal sofa and two yellow lounge chairs on a wooden floor",
+    "caption": "The lobby at the Waterloo office"
+  },
+  {
+    "id": "magnet-waterloo-big-room",
+    "src": "archive/images/Magnet1/BigRoom.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Large open event space with rows of white and black chairs, ceiling light panels and wall-mounted screens",
+    "caption": "The Big Room, the office's all-hands and event space"
+  },
+  {
+    "id": "magnet-waterloo-kitchen",
+    "src": "archive/images/Magnet1/BigRoom-Kitchen.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Office kitchen with a long white island, pendant lights and a hexagon-tiled backsplash",
+    "caption": "The kitchen off the Big Room"
+  },
+  {
+    "id": "magnet-waterloo-games",
+    "src": "archive/images/Magnet1/BigRoom-Games.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Games area with a pool table, a foosball table and a ping pong table beneath hexagonal ceiling lights",
+    "caption": "The games area in the Big Room"
+  },
+  {
+    "id": "magnet-waterloo-desk",
+    "src": "archive/images/Magnet1/OfficeDesk.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Curved office workstation with two monitors in an open-plan area with large windows",
+    "caption": "A workstation at the Waterloo office"
+  },
+  {
+    "id": "magnet-waterloo-wall-logo",
+    "src": "archive/images/Magnet1/WallLogo.jpg",
+    "group": "magnet-review",
+    "kind": "photo",
+    "alt": "Large gold Magnet Forensics logo mounted on a dark blue-grey wall",
+    "caption": "Magnet Forensics branding at the Waterloo office"
+  },
+  {
+    "id": "magnet-ottawa-entrance",
+    "src": "archive/images/Magnet2/1-OfficeEntrance.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Office entrance with a silver Magnet Forensics logo on a white wall above two grey lounge chairs and a potted plant",
+    "caption": "The entrance to the Ottawa office"
+  },
+  {
+    "id": "magnet-ottawa-meeting-room",
+    "src": "archive/images/Magnet2/1-MeetingRoom.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Meeting room with a large table and a mural reading \"Impact people's lives by uncovering the truth and empowering others to make a difference\"",
+    "caption": "A meeting room at the Ottawa office"
+  },
+  {
+    "id": "magnet-ottawa-office",
+    "src": "archive/images/Magnet2/2-Office3.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Open-plan office with a lounge area of grey armchairs on a blue rug in front of rows of desks",
+    "caption": "The Ottawa office workspace"
+  },
+  {
+    "id": "magnet-ottawa-sign",
+    "src": "archive/images/Magnet2/1-OttawaSign.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Large multicoloured letters spelling OTTAWA in front of downtown buildings at dusk",
+    "caption": "The OTTAWA sign downtown"
+  },
+  {
+    "id": "magnet-ottawa-parliament",
+    "src": "archive/images/Magnet2/1-Parliament.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Gothic Revival parliament building with green copper roofs under a clear blue sky",
+    "caption": "Parliament Hill"
+  },
+  {
+    "id": "magnet-ottawa-basilica",
+    "src": "archive/images/Magnet2/3-OttawaTour1.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Giant bronze spider sculpture in a plaza in front of a cathedral with twin silver spires",
+    "caption": "Maman and the Notre-Dame Cathedral Basilica"
+  },
+  {
+    "id": "magnet-ottawa-river",
+    "src": "archive/images/Magnet2/3-OttawaTour3.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "View across a river to a city skyline on a sunny day, with rocks and trees on the near shore",
+    "caption": "The Ottawa River"
+  },
+  {
+    "id": "magnet-ottawa-tulips",
+    "src": "archive/images/Magnet2/4-Tulips.jpg",
+    "group": "magnet-axiom-cyber",
+    "kind": "photo",
+    "alt": "Red and pink tulips in bloom in a garden bed",
+    "caption": "Tulips in bloom in Ottawa"
+  },
+  {
+    "id": "about-bookshelf",
+    "src": "site/media-src/about/bookshelf.jpg",
+    "group": "general",
+    "kind": "photo",
+    "alt": "Three white bookshelves packed with manga box sets and volumes, video games, and graphic novels, with an acoustic and an electric guitar on stands beside them",
+    "caption": "My shelves, which double as my background on work calls"
+  },
+  {
+    "id": "about-watches",
+    "src": "site/media-src/about/watches.jpg",
+    "group": "general",
+    "kind": "photo",
+    "alt": "An open wooden watch box holding ten watches, including mechanical, Eco-Drive, and digital G-Shock models, on leather, nylon, and steel straps",
+    "caption": "My humble collection so far. I’m saving up for a few really cool pieces!"
+  }
+]
