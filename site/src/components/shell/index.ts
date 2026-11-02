@@ -5,3 +5,4 @@ export { SkipLink, type SkipLinkProps } from "./SkipLink";
 export { PageTransition } from "./PageTransition";
 export { ariaCurrent, linkState } from "./navigation";
 export { MotionToggle, type MotionToggleProps } from "./MotionToggle";
+export { ThemeToggle, type ThemeToggleProps } from "./ThemeToggle";

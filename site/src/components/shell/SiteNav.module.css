@@ -115,7 +115,11 @@
   position: relative;
 }
 
-.motion {
+/* Animation and theme toggles, paired. */
+.toggles {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
   margin-inline-start: var(--space-1);
 }
 

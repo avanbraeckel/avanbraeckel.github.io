@@ -23,6 +23,7 @@ import { cx } from "@/components/ui/cx";
 import { site } from "@/content/site";
 import { useMotionPreference } from "@/design/motion";
 import { MotionToggle } from "./MotionToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import { ariaCurrent } from "./navigation";
 import { VelocityTracker, dragOffset, releaseDecision } from "./sheetPhysics";
 import styles from "./NavSheet.module.css";
@@ -327,6 +328,7 @@ function NavSheet({ open, onOpenChange, onExited, pathname }: NavSheetProps) {
             </nav>
             <div className={styles.actions}>
               <MotionToggle variant="row" />
+              <ThemeToggle variant="row" />
               <Button
                 href={site.resume.href}
                 newTab

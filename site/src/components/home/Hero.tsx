@@ -5,7 +5,7 @@ import styles from "./Hero.module.css";
 
 /** Used until the owner supplies `site.tagline`. */
 const DEFAULT_POSITIONING =
-  "These days I’m a Software Engineer on the Nexus team at Magnet Forensics. I love problem-solving, video games, and of course, programming!";
+  "These days I’m a Software Engineer at Magnet Forensics. I love tackling cool problems, trying out new tech, and building sleek, usable UIs.";
 
 /**
  * "Hi! I’m" above the name, with the first name on its own line and the

@@ -17,9 +17,7 @@ describe("Home page", () => {
   it("mentions the current role", () => {
     render(<Home />);
     expect(
-      screen.getByText(
-        /Software Engineer on the Nexus team at Magnet Forensics/,
-      ),
+      screen.getByText(/Software Engineer at Magnet Forensics/),
     ).toBeInTheDocument();
   });
 

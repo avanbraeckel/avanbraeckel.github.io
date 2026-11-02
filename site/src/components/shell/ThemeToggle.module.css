@@ -1,0 +1,42 @@
+.toggle {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition:
+    color var(--duration-hover) var(--ease-out),
+    background-color var(--duration-hover) var(--ease-out),
+    transform var(--duration-hover) var(--ease-out);
+}
+
+/*
+ * Moon in light mode (switch to dark), sun in dark mode (switch to light).
+ * Keyed off the same selectors as tokens.css, so the glyph matches the page
+ * from first paint.
+ */
+.moon,
+.sun {
+  display: grid;
+  place-items: center;
+}
+
+.sun {
+  display: none;
+}
+
+:global(:root[data-theme="dark"]) .moon {
+  display: none;
+}
+
+:global(:root[data-theme="dark"]) .sun {
+  display: grid;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"])) .moon {
+    display: none;
+  }
+
+  :global(:root:not([data-theme="light"])) .sun {
+    display: grid;
+  }
+}

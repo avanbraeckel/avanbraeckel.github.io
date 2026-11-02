@@ -1,10 +1,10 @@
 [
   {
     "id": "portrait",
-    "src": "archive/images/portrait.jpg",
+    "src": "site/media-src/portrait.jpg",
     "group": "general",
     "kind": "portrait",
-    "alt": "Austin Van Braeckel smiling outdoors in a denim jacket, with green foliage behind him",
+    "alt": "Austin Van Braeckel smiling in a black T-shirt and a jade pendant, in front of a soft teal backdrop",
     "caption": "Austin Van Braeckel"
   },
   {

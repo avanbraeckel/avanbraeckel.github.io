@@ -8,6 +8,7 @@ import { cx } from "@/components/ui/cx";
 import { site } from "@/content/site";
 import { useMotionPreference } from "@/design/motion";
 import { MotionToggle } from "./MotionToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import { NavMenu } from "./NavSheet";
 import { ariaCurrent } from "./navigation";
 import styles from "./SiteNav.module.css";
@@ -65,7 +66,10 @@ export function SiteNav() {
               })}
             </ul>
           </LayoutGroup>
-          <MotionToggle className={styles.motion} />
+          <div className={styles.toggles}>
+            <MotionToggle />
+            <ThemeToggle />
+          </div>
           <Button
             href={site.resume.href}
             newTab

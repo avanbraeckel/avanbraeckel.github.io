@@ -8,6 +8,7 @@ import {
 } from "@/components/shell";
 import { site } from "@/content/site";
 import { AMBIENT_MOTION_INIT_SCRIPT } from "@/design/ambientMotionScript";
+import { THEME_INIT_SCRIPT } from "@/design/themeScript";
 import { avbDisplay, inter } from "@/design/fonts";
 import {
   DEFAULT_DESCRIPTION,
@@ -27,10 +28,11 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
-  // Setting `icons` drops the file-based icon.svg link (favicon.ico stays),
-  // so the SVG is listed here too.
+  // Setting `icons` drops the file-based icon.svg link (favicon.ico stays).
+  // The browser tab uses the original AVB logo (64px PNG, legacy site); the
+  // SVG monogram still backs the home-screen icon, manifest and OG cards.
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
     apple: "/apple-touch-icon.png",
   },
   openGraph: { ...baseOpenGraph, images: [ogImage("/")] },
@@ -47,8 +49,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning: the init script sets data-ambient-motion
-    // before React hydrates, so the attribute differs from the server HTML.
+    // suppressHydrationWarning: the init scripts set data-ambient-motion and
+    // data-theme before React hydrates, so the attributes differ from the
+    // server HTML.
     <html
       lang="en"
       className={`${inter.variable} ${avbDisplay.variable}`}
@@ -57,7 +60,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script
           // Constant string (no user input); runs before first paint.
-          dangerouslySetInnerHTML={{ __html: AMBIENT_MOTION_INIT_SCRIPT }}
+          dangerouslySetInnerHTML={{
+            __html: THEME_INIT_SCRIPT + AMBIENT_MOTION_INIT_SCRIPT,
+          }}
         />
       </head>
       <body>

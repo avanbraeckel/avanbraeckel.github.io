@@ -41,6 +41,13 @@ const icons = {
       <rect x="14" y="5" width="4" height="14" rx="1.25" />
     </g>
   ),
+  sun: (
+    <g {...stroke}>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.28 5.28l1.42 1.42M17.3 17.3l1.42 1.42M5.28 18.72l1.42-1.42M17.3 6.7l1.42-1.42" />
+    </g>
+  ),
+  moon: <path {...stroke} d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />,
   document: (
     <g {...stroke}>
       <path d="M13.5 3.5H7.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V8.5z" />

@@ -5,19 +5,23 @@
       "id": "portrait",
       "group": "general",
       "kind": "portrait",
-      "alt": "Austin Van Braeckel smiling outdoors in a denim jacket, with green foliage behind him",
+      "alt": "Austin Van Braeckel smiling in a black T-shirt and a jade pendant, in front of a soft teal backdrop",
       "caption": "Austin Van Braeckel",
-      "width": 425,
-      "height": 425,
+      "width": 1280,
+      "height": 1280,
       "hasAlpha": false,
-      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoQABAAA4BaJbACdH8AEBd18z3oQAD+7FLQMeTZrnUhJrXhrHGkXRRWuuWj+Lgh1924khrkd3L9kdGgrQh1SgaohlyqGOvdePf4XTXwb62UEjfOUb9zulHS1mrM87bKODPgsajXMMFAQZT2uii8gAAA",
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACQAgCdASoQABAAA4BaJYgCdB2gDYwPGblPcBVSkAD+tRmc+0Uc6EhJO0QuCxiTtkxOqQrEU7enLE+SRdgLtR9BmDRMajlUb7JJjJYXYoG8tvmAtaUaQO6RMCQous4TWQxdtrPHTekydlEAAAA=",
       "sources": [
         {
           "type": "image/avif",
           "srcSet": [
             {
-              "src": "/media/portrait-425.751b53d063.avif",
-              "width": 425
+              "src": "/media/portrait-640.6b0e71ffbe.avif",
+              "width": 640
+            },
+            {
+              "src": "/media/portrait-1280.6b0e71ffbe.avif",
+              "width": 1280
             }
           ]
         },
@@ -25,13 +29,17 @@
           "type": "image/webp",
           "srcSet": [
             {
-              "src": "/media/portrait-425.751b53d063.webp",
-              "width": 425
+              "src": "/media/portrait-640.6b0e71ffbe.webp",
+              "width": 640
+            },
+            {
+              "src": "/media/portrait-1280.6b0e71ffbe.webp",
+              "width": 1280
             }
           ]
         }
       ],
-      "fallback": "/media/portrait-425.751b53d063.webp"
+      "fallback": "/media/portrait-1280.6b0e71ffbe.webp"
     },
     "transient-screenshot": {
       "id": "transient-screenshot",

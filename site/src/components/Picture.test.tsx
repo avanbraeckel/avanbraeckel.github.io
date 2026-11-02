@@ -93,10 +93,10 @@ describe("media manifest", () => {
       }
       expect(image.width).toBeLessThanOrEqual(1920);
     }
-    // The 425px portrait has a single intrinsic-size variant.
-    expect(getMedia("portrait").sources[0].srcSet).toEqual([
-      { src: expect.stringMatching(/portrait-425\./), width: 425 },
-    ]);
+    // The 1280px portrait stops at its intrinsic width: no 1920px variant.
+    expect(
+      getMedia("portrait").sources[0].srcSet.map(({ width }) => width),
+    ).toEqual([640, 1280]);
   });
 
   it("respects EXIF orientation (rotated tulips photo is portrait)", () => {
