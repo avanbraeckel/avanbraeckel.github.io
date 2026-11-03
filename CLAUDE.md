@@ -2,44 +2,29 @@
 
 ## Repository layout
 
-Personal portfolio site (`https://avanbraeckel.github.io`). See `PLAN.md` for the design/architecture rationale and `TICKETS.md` for the iteration-1 work breakdown.
+Personal portfolio site (`https://avanbraeckel.github.io`). Design rationale: `PLAN.md`. Review rules: `CODING_STANDARDS.md`.
 
-- **`site/`**: the live site. Next.js 16 (App Router, TypeScript strict) statically exported (`output: 'export'`, `trailingSlash: true`) and deployed to GitHub Pages by `.github/workflows/deploy.yml`. This is where active development happens.
-- **`archive/`**: not deployed, not linked from the site (but public on GitHub). Original co-op reports as PDFs, full-resolution legacy photos, the original Transient zip, and a runnable copy of the legacy site. See `archive/README.md`.
-- **Legacy (pending deletion):** the HTML5 UP "Photon" pages at the repo root (`index.html`, `magnet1.html`, `magnet2.html`, `ncr.html`, `transient.html`, `pong.html`, plus `assets/`, `images/`, `navbar.md`, `README.txt`, `LICENSE.txt`) and the abandoned CRA app in `react-app/`. Everything has been ported to `site/` or copied into `archive/`. The build no longer depends on them: `site/media-sources.json` points at `archive/images/` (or `site/media-src/`), and the Transient scripts read `archive/transient/` first, keeping `assets/` only as a marked fallback (`legacy-fallback`) that goes away with the legacy folders. `site/src/media/sources.test.ts` guards this.
+- **`site/`**: the live site. Next.js 16 (App Router, TypeScript strict) statically exported (`output: 'export'`, `trailingSlash: true`). All commands run from here; see `package.json` scripts.
+- **`archive/`**: not deployed or linked, but public on GitHub: co-op report PDFs, full-resolution photos, the Transient zip, a runnable legacy site. The build reads images and the zip from here.
+- **Legacy (pending the owner's approval to delete):** the HTML5 UP pages and folders at the repo root and `react-app/`. Nothing depends on them except lines marked `legacy-fallback`; `site/src/media/sources.test.ts` guards this.
 
-## Commands
+## Gotchas
 
-All commands run from `site/`. The system npm 9 on this machine is broken; use npm 10 (`~/.local/bin/npm`).
+- Headless Chromium needs `LD_LIBRARY_PATH=/home/avanbraeckel/.local/chromium-libs/root/usr/lib/x86_64-linux-gnu`. The repo's Playwright scripts set it themselves.
+- Capture UI with `npm run screenshot -- --routes /about/ --selector "<css>" --viewport mobile --scheme dark` after a build; it serves `out/` itself, so never start ad-hoc servers (and never `pkill -f`, which kills the agent's own shell).
+- CheerpJ (Transient in the browser) needs HTTP Range; `npm start` and the scripts' servers support it. Keep the "Built with CheerpJ" credit and the on-screen license notice untouched (free Community license).
+- Parallel agents: build with `npm run sandbox -- <name>` (private copy under `~/.cache/avb-sandboxes/`), never `npm run build` in `site/` while others work; `npm run sandbox -- --clean` afterwards.
+- Never invent facts about the owner in copy; sources are `site/src/content/*`, `archive/`, or the owner.
 
-```bash
-npm install
-npm run dev               # dev server at http://localhost:3000 (predev prepares Transient files)
-npm run build             # prebuild: optimize images + prepare Transient; then static export → site/out/
-npm start                 # serve site/out/ (supports HTTP Range, needed by CheerpJ)
-npm run lint
-npm run typecheck         # next typegen && tsc --noEmit
-npm test                  # Vitest, single run (npm run test:watch for watch mode)
-npx vitest run -t "name"  # run tests matching a name
-npm run format            # Prettier (format:check in CI)
-npm run screenshot        # headless Playwright screenshots of every route → site/.screenshots/
-npm run a11y              # axe (WCAG 2.2 AA) audit of every route in a real browser; needs a build first
-```
+## Deployment and CI
 
-Headless Chromium needs extra libraries that are not installed system-wide. `scripts/screenshot.mjs` sets `LD_LIBRARY_PATH=/home/avanbraeckel/.local/chromium-libs/root/usr/lib/x86_64-linux-gnu` itself; other Playwright scripts must set it too.
-
-## Deployment
-
-`.github/workflows/deploy.yml` builds `site/` and publishes `site/out/` with `actions/deploy-pages` on every push to `master`. The repo's Pages source must be set to **GitHub Actions** (Settings → Pages). The old `gh-pages` branch and the `gh-pages` npm flow are obsolete. `ci.yml` runs lint, typecheck, test and build on PRs.
+Every push to `master` runs `deploy.yml`, which calls `ci.yml` (lint, format, typecheck, tests, build, axe audit) and publishes to Pages only if it passes. Other branches and PRs run `ci.yml` alone. A pre-commit hook (husky + lint-staged, in `site/.husky/`) formats, lints and typechecks staged files. Check runs with `gh run list` / `gh run view <id> --log-failed`.
 
 ## Site architecture (`site/src/`)
 
-- `app/`: routes. `layout.tsx` holds the persistent shell: skip link, `LivingBackground`, `SiteNav`, `<main id="main">` wrapped in `PageTransition`, `SiteFooter`, Person JSON-LD. Routes: `/`, `/about/`, `/projects/`, `/projects/transient/`, `/experience/`, `/experience/[slug]/`. SEO lives in `sitemap.ts`, `robots.ts`, `manifest.ts`, `og/[image]/route.tsx` (build-time PNG OG cards), and `lib/seo.ts` (`pageMetadata()`; every page's metadata goes through it).
-- `content/`: single sources of truth. `site.ts` (name, nav, socials, résumé; `tagline`/`email` are `null` until the owner fills them, and the UI hides them), `experience.ts` (timeline + case-study entries), `projects.ts`, `case-studies/*.mdx` (rendered via `@next/mdx`).
-- `design/`: `tokens.css` (semantic colors light/dark, materials, spacing, radii, z-index, reduced-transparency/contrast overrides), `typography.css`, `motion.ts` (spring presets, `project()`, `rubberband()`, reduced-motion hooks), self-hosted Inter.
-- `components/ui/`: primitives (Button, Link, Card, Chip, Container, Section, Icon, VisuallyHidden). `components/shell/`: nav, draggable mobile sheet (`sheetPhysics.ts`), footer, page transitions. `components/{home,projects,experience}/`: page sections. `components/Picture.tsx` renders optimized images by manifest id.
-- `background/`: the WebGL2 "living background" (topographic field). Tuning knobs are in `simulation.ts` `BACKGROUND_PARAMS`.
-- `media/` + `scripts/optimize-images.mjs`: curated images listed in `site/media-sources.json` are encoded to AVIF/WebP in `public/media/` (gitignored, generated at build). `src/media/manifest.json` is committed.
-- Transient: `scripts/prepare-transient.mjs` copies the zip and extracts the game into `public/transient/` (gitignored), including a tiny `patch.jar` that fixes an audio busy-loop which hangs CheerpJ. `components/projects/TransientPlayer.tsx` loads CheerpJ 5 from its CDN only on click (required by the free Community license; keep the "Built with CheerpJ" credit and the on-screen notice).
-
-Conventions: CSS Modules + design tokens (no Tailwind/MUI/styled-components), `motion/react` for animation, `radix-ui` for accessible overlays, Vitest + Testing Library (+ vitest-axe) tests next to the code. Design follows `.claude/skills/AppleDesign/SKILL.md`: critically damped springs by default, interruptible motion, and respect for reduced motion/transparency/contrast. Never invent facts about the owner in copy.
+- `app/layout.tsx`: the persistent shell (skip link, `LivingBackground`, `SiteNav`, `PageTransition`, `SiteFooter`) and the pre-paint init scripts for theme and paused motion. Every page's metadata goes through `lib/seo.ts` `pageMetadata()`.
+- `content/`: single sources of truth for copy and facts (`site.ts`, `experience.ts`, `projects.ts`, `case-studies/*.mdx`).
+- `design/`: tokens, typography, motion presets, and the visitor-choice stores (`theme.ts`, `ambientMotion.ts`).
+- `background/`: the WebGL2 topographic background; tuning knobs in `simulation.ts` `BACKGROUND_PARAMS`.
+- Images: list sources in `site/media-sources.json`; `scripts/optimize-images.mjs` encodes them at build and `components/Picture.tsx` renders them by id.
+- Transient: `scripts/prepare-transient.mjs` extracts the game (plus a `patch.jar` that fixes an audio busy-loop that hangs CheerpJ); `components/projects/TransientPlayer.tsx` loads CheerpJ only on click.

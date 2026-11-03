@@ -8,6 +8,14 @@
  *   npm run screenshot -- --routes /,/projects/transient/
  *   npm run screenshot -- http://localhost:3000 / /projects/
  *   npm run screenshot -- --stitch                   # per-viewport tiles, stitched
+ *   npm run screenshot -- --routes /about/ --selector "section[aria-labelledby=music]"
+ *   npm run screenshot -- --viewport mobile --scheme dark
+ *
+ * --selector captures just that element (scrolled into view) instead of the
+ * page. --viewport (desktop|mobile) and --scheme (light|dark) narrow the
+ * matrix; when either is given, the reduced-motion pass runs only with
+ * --reduced-motion. This script serves out/ itself (with HTTP Range), so there
+ * is no need to start a server by hand.
  *
  * Before capturing, each page is scrolled through one viewport at a time so
  * lazy images load and decode and scroll-triggered reveals run, then it
@@ -16,7 +24,7 @@
  * captures one viewport per scroll step and stitches them, so fixed layers
  * appear the way a reader sees them at each position.
  *
- * Output: .screenshots/<route>__<viewport>__<scheme>[__reduced-motion].png
+ * Output: .screenshots/<route>__<viewport>__<scheme>[__reduced-motion][__<selector>].png
  * Only the captured routes' files are overwritten; other files in
  * .screenshots/ (other routes, ad-hoc captures) are left alone.
  */
@@ -68,6 +76,10 @@ const MIME = {
 function parseArgs(argv) {
   let baseUrl = process.env.SCREENSHOT_BASE_URL || null;
   let stitch = false;
+  let selector = null;
+  let viewport = null;
+  let scheme = null;
+  let reducedMotion = false;
   let routes = process.env.SCREENSHOT_ROUTES
     ? process.env.SCREENSHOT_ROUTES.split(",")
     : null;
@@ -78,6 +90,10 @@ function parseArgs(argv) {
     else if (arg.startsWith("--base-url="))
       baseUrl = arg.split("=").slice(1).join("=");
     else if (arg === "--stitch") stitch = true;
+    else if (arg === "--selector") selector = argv[++i];
+    else if (arg === "--viewport") viewport = argv[++i];
+    else if (arg === "--scheme") scheme = argv[++i];
+    else if (arg === "--reduced-motion") reducedMotion = true;
     else if (arg === "--routes") routes = argv[++i].split(",");
     else if (arg.startsWith("--routes="))
       routes = arg.slice("--routes=".length).split(",");
@@ -87,9 +103,21 @@ function parseArgs(argv) {
     if (/^https?:\/\//.test(p)) baseUrl = p;
     else (routes ??= []).push(...p.split(","));
   }
+  if (viewport && !VIEWPORTS.some((v) => v.name === viewport)) {
+    throw new Error(
+      `--viewport must be one of: ${VIEWPORTS.map((v) => v.name).join(", ")}`,
+    );
+  }
+  if (scheme && !SCHEMES.includes(scheme)) {
+    throw new Error(`--scheme must be one of: ${SCHEMES.join(", ")}`);
+  }
   return {
     baseUrl,
     stitch,
+    selector,
+    viewport,
+    scheme,
+    reducedMotion,
     routes: routes?.map((r) => r.trim()).filter(Boolean) ?? null,
   };
 }
@@ -245,7 +273,8 @@ async function main() {
 
   const args = parseArgs(process.argv.slice(2));
   let { baseUrl, routes } = args;
-  const { stitch } = args;
+  const { stitch, selector } = args;
+  const filtered = Boolean(args.viewport || args.scheme);
   let server = null;
 
   if (!baseUrl || !routes) {
@@ -268,17 +297,23 @@ async function main() {
     args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
   });
 
+  const viewports = VIEWPORTS.filter(
+    (v) => !args.viewport || v.name === args.viewport,
+  );
+  const schemes = SCHEMES.filter((s) => !args.scheme || s === args.scheme);
   const passes = [];
-  for (const viewport of VIEWPORTS) {
-    for (const colorScheme of SCHEMES) {
+  for (const viewport of viewports) {
+    for (const colorScheme of schemes) {
       passes.push({ viewport, colorScheme, reducedMotion: "no-preference" });
     }
   }
-  passes.push({
-    viewport: VIEWPORTS[0],
-    colorScheme: "light",
-    reducedMotion: "reduce",
-  });
+  if (!filtered || args.reducedMotion) {
+    passes.push({
+      viewport: viewports[0],
+      colorScheme: schemes[0],
+      reducedMotion: "reduce",
+    });
+  }
 
   let count = 0;
   let failures = 0;
@@ -293,7 +328,9 @@ async function main() {
       const page = await context.newPage();
       for (const route of routes) {
         const url = `${baseUrl}${route.startsWith("/") ? route : `/${route}`}`;
-        const suffix = reducedMotion === "reduce" ? "__reduced-motion" : "";
+        const suffix =
+          (reducedMotion === "reduce" ? "__reduced-motion" : "") +
+          (selector ? `__${slug(selector)}` : "");
         const file = path.join(
           SHOTS_DIR,
           `${slug(route)}__${viewport.name}__${colorScheme}${suffix}.png`,
@@ -305,7 +342,13 @@ async function main() {
           }
           await page.evaluate(() => document.fonts?.ready);
           await scrollThrough(page);
-          if (stitch) await stitchedScreenshot(page, file, viewport);
+          if (selector) {
+            const element = page.locator(selector).first();
+            await element.scrollIntoViewIfNeeded();
+            // Let reveals and lazy images settle after the scroll.
+            await page.waitForTimeout(600);
+            await element.screenshot({ path: file });
+          } else if (stitch) await stitchedScreenshot(page, file, viewport);
           else await page.screenshot({ path: file, fullPage: true });
           count++;
           console.log(`  ${path.relative(SITE_DIR, file)}`);

@@ -1,11 +1,17 @@
 name: CI
 
+# master is checked by deploy.yml, which calls this workflow before it
+# publishes, so a push there runs the checks once and deploys only if they pass.
 on:
   pull_request:
   push:
+    branches-ignore: [master]
+  workflow_call:
 
+# github.workflow is the caller's name when called, so the deploy's checks
+# never cancel (or get cancelled by) a standalone CI run.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:

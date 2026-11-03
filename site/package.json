@@ -16,7 +16,9 @@
     "format:check": "prettier --check .",
     "screenshot": "node scripts/screenshot.mjs",
     "a11y": "node scripts/a11y-audit.mjs",
-    "sprites": "node scripts/extract-sprites.mjs"
+    "sprites": "node scripts/extract-sprites.mjs",
+    "prepare": "cd .. && husky site/.husky",
+    "sandbox": "bash scripts/sandbox-build.sh"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -42,7 +44,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
+    "lint-staged": "^17.6.0",
     "playwright": "^1.64.1",
     "prettier": "^3.9.10",
     "serve": "^14.2.6",
@@ -53,5 +57,12 @@
   },
   "engines": {
     "node": ">=20.19.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,json,md,mdx,yml,yaml}": "prettier --write"
   }
 }

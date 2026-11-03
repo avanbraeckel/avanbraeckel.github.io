@@ -133,7 +133,9 @@ describe("Link", () => {
     const link = screen.getByRole("link");
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "me noopener noreferrer");
-    expect(link).toHaveAccessibleName("GitHub (opens in a new tab)");
+    // jsdom doesn't apply the icon's inline-block CSS, so it can drop the space
+    // before the hidden suffix; browsers keep it.
+    expect(link).toHaveAccessibleName(/^GitHub ?\(opens in a new tab\)$/);
     expect(container.querySelector('svg[data-icon="external"]')).not.toBeNull();
   });
 

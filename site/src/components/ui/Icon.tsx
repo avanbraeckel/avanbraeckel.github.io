@@ -1,4 +1,6 @@
 import type { ReactNode, SVGProps } from "react";
+import { cx } from "./cx";
+import styles from "./Icon.module.css";
 
 /* Stroke icons share a 24px grid and a 1.75 stroke; brand marks are filled. */
 const stroke = {
@@ -110,7 +112,13 @@ export interface IconProps extends Omit<
 }
 
 /** Inline SVG icon that inherits currentColor. */
-export function Icon({ name, size = "1em", title, ...rest }: IconProps) {
+export function Icon({
+  name,
+  size = "1em",
+  title,
+  className,
+  ...rest
+}: IconProps) {
   const labelled = Boolean(title);
   return (
     <svg
@@ -122,11 +130,7 @@ export function Icon({ name, size = "1em", title, ...rest }: IconProps) {
       role={labelled ? "img" : undefined}
       aria-label={title}
       data-icon={name}
-      style={{
-        flexShrink: 0,
-        display: "inline-block",
-        verticalAlign: "middle",
-      }}
+      className={cx(styles.icon, className)}
       {...rest}
     >
       {icons[name]}

@@ -1,0 +1,7 @@
+/* A class rather than an inline style, so a className passed to <Icon> can
+   override these (pass it a more specific selector, or one loaded later). */
+.icon {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}

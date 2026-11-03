@@ -1,0 +1,4 @@
+# Runs from the repo root; the site package lives in site/.
+cd site
+npx lint-staged
+npm run typecheck

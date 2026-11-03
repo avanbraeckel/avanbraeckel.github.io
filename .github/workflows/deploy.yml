@@ -16,7 +16,15 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Lint, format, typecheck, tests, build and the axe audit (ci.yml). Nothing
+  # is published unless they all pass.
+  checks:
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
   build:
+    needs: checks
     runs-on: ubuntu-latest
     defaults:
       run:
