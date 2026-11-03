@@ -55,6 +55,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${inter.variable} ${avbDisplay.variable}`}
+      // Lets Next turn off globals.css's smooth scrolling while it resets the
+      // scroll position on navigation; otherwise its per-section
+      // scrollIntoView calls animate and can stop partway down the page.
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
