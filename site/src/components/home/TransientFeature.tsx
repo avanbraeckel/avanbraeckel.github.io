@@ -34,8 +34,10 @@ export function TransientFeature() {
             I even made my own game!
           </h2>
           <p>
-            Transient is a 2D platformer I made from scratch in Java. It isn’t
-            easy, but you can play it right here in your browser.
+            Transient is a 2D platformer I made from scratch in Java as my
+            Grade&nbsp;12 final project, back before AI coding tools were a
+            thing. It isn’t easy, but you can play it right here in your
+            browser.
           </p>
           <p>
             <Link href={transient.href} className={styles.cta}>

@@ -29,9 +29,10 @@ export default function TransientPage() {
       <header className={styles.header}>
         <h1 className={styles.title}>Transient</h1>
         <p className={styles.lead}>
-          A 2D platformer I made from scratch in Java in 2019. Fair warning, it
-          isn’t easy! You can play it right here in your browser, or download it
-          to play on your computer.
+          A 2D platformer I made from scratch in Java in 2019, as my final
+          project for Grade&nbsp;12 programming. Fair warning, it isn’t easy!
+          You can play it right here in your browser, or download it to play on
+          your computer.
         </p>
         <div className={styles.actions}>
           <Button
@@ -53,6 +54,25 @@ export default function TransientPage() {
       </div>
 
       <div className={styles.details}>
+        <section className={styles.block} aria-labelledby="story">
+          <h2 id="story" className={styles.blockTitle}>
+            The story
+          </h2>
+          <div className={styles.prose}>
+            <p>
+              Transient was my final project for my Grade&nbsp;12 programming
+              course. I could have played it safe with something small, but I
+              really wanted to make a real game, so I went for it.
+            </p>
+            <p>
+              This was back in 2019, before AI coding tools were a thing, so
+              every line of it was written by hand. I built it on what I knew
+              about object-oriented programming and video game design, and
+              figured out everything else with good old-fashioned research.
+            </p>
+          </div>
+        </section>
+
         <section className={styles.block} aria-labelledby="how-it-plays">
           <h2 id="how-it-plays" className={styles.blockTitle}>
             How it plays

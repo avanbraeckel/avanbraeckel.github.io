@@ -4,7 +4,8 @@ import type { MediaId } from "@/media";
  * Personal projects shown on /projects. The home page features Transient.
  *
  * Facts come from the legacy pages (`transient.html`) and from
- * the Transient user manual shipped inside the game's download. Do not add
+ * the Transient user manual shipped inside the game's download, plus the
+ * owner directly (it was the owner’s 2019 Grade 12 final project). Do not add
  * dates, metrics, or collaborators that are not published there.
  */
 export interface Project {

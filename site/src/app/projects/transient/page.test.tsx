@@ -10,6 +10,13 @@ describe("Transient page", () => {
     ).toBeInTheDocument();
   });
 
+  it("tells the story: a 2019 Grade 12 final project, hand-written before AI tools", () => {
+    render(<TransientPage />);
+    const story = screen.getByRole("region", { name: "The story" });
+    expect(story).toHaveTextContent(/Grade 12 programming course/);
+    expect(story).toHaveTextContent(/before AI coding tools/);
+  });
+
   it("downloads the game zip", () => {
     render(<TransientPage />);
     const download = screen.getByRole("link", { name: /^download$/i });
