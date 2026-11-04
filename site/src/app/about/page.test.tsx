@@ -22,10 +22,9 @@ describe("About page", () => {
 
   it("links to the résumé, GitHub, and LinkedIn", () => {
     render(<AboutPage />);
-    expect(screen.getByRole("link", { name: /résumé/i })).toHaveAttribute(
-      "href",
-      site.resume.href,
-    );
+    const resume = screen.queryByRole("link", { name: /résumé/i });
+    if (site.resume) expect(resume).toHaveAttribute("href", site.resume.href);
+    else expect(resume).toBeNull();
     for (const social of site.social) {
       expect(
         screen.getByRole("link", { name: new RegExp(social.label, "i") }),

@@ -42,9 +42,11 @@ export function Hero() {
             <Link href="/about/" className={styles.textLink}>
               More about me
             </Link>
-            <Link href={site.resume.href} newTab className={styles.textLink}>
-              {site.resume.label}
-            </Link>
+            {site.resume && (
+              <Link href={site.resume.href} newTab className={styles.textLink}>
+                {site.resume.label}
+              </Link>
+            )}
           </div>
         </div>
       </Container>

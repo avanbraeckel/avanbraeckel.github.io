@@ -70,16 +70,18 @@ export function SiteNav() {
             <MotionToggle />
             <ThemeToggle />
           </div>
-          <Button
-            href={site.resume.href}
-            newTab
-            variant="tinted"
-            size="small"
-            icon="document"
-            className={styles.resume}
-          >
-            {site.resume.label}
-          </Button>
+          {site.resume && (
+            <Button
+              href={site.resume.href}
+              newTab
+              variant="tinted"
+              size="small"
+              icon="document"
+              className={styles.resume}
+            >
+              {site.resume.label}
+            </Button>
+          )}
         </nav>
 
         <div className={styles.mobile}>

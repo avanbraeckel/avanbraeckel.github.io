@@ -185,9 +185,11 @@ export default function AboutPage() {
             Find me online
           </h2>
           <div className={styles.links}>
-            <Button href={site.resume.href} newTab icon="document">
-              {site.resume.label}
-            </Button>
+            {site.resume && (
+              <Button href={site.resume.href} newTab icon="document">
+                {site.resume.label}
+              </Button>
+            )}
             {site.social.map((link) => (
               <Button
                 key={link.href}

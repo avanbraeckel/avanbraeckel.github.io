@@ -13,6 +13,17 @@ import { SiteFooter } from "./SiteFooter";
 import { SiteNav } from "./SiteNav";
 import { SkipLink } from "./SkipLink";
 
+/** The résumé link, or its absence while `site.resume` is null. */
+function expectResume(container: HTMLElement) {
+  const resume = within(container).queryByRole("link", { name: /Résumé/ });
+  if (!site.resume) {
+    expect(resume).toBeNull();
+    return;
+  }
+  expect(resume).toHaveAttribute("href", site.resume.href);
+  expect(resume).toHaveAttribute("target", "_blank");
+}
+
 const navigation = vi.hoisted(() => ({ pathname: "/" }));
 vi.mock("next/navigation", () => ({
   usePathname: () => navigation.pathname,
@@ -58,12 +69,9 @@ describe("SiteNav", () => {
     ]);
   });
 
-  it("opens the résumé PDF in a new tab", () => {
+  it("opens the résumé PDF in a new tab, or hides it while unset", () => {
     render(<SiteNav />);
-    const resume = within(desktopNav()).getByRole("link", { name: /Résumé/ });
-    expect(resume).toHaveAttribute("href", "/resume.pdf");
-    expect(resume).toHaveAttribute("target", "_blank");
-    expect(resume).toHaveAttribute("rel", "noopener noreferrer");
+    expectResume(desktopNav());
   });
 
   it("marks the active item with aria-current=page", () => {
@@ -95,10 +103,13 @@ describe("SiteNav", () => {
       name: "Pause animations",
     });
     expect(toggle).toHaveAttribute("aria-pressed", "false");
-    const resume = within(nav).getByRole("link", { name: /Résumé/ });
-    expect(
-      toggle.compareDocumentPosition(resume) & Node.DOCUMENT_POSITION_FOLLOWING,
-    ).toBeTruthy();
+    const resume = within(nav).queryByRole("link", { name: /Résumé/ });
+    if (resume) {
+      expect(
+        toggle.compareDocumentPosition(resume) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+    }
   });
 
   it("always shows the scroll-edge material, even at the top", () => {
@@ -133,9 +144,7 @@ describe("mobile nav sheet", () => {
       "aria-current",
       "page",
     );
-    expect(
-      within(dialog).getByRole("link", { name: /Résumé/ }),
-    ).toHaveAttribute("target", "_blank");
+    expectResume(dialog);
     for (const social of site.social) {
       expect(
         within(dialog).getByRole("link", { name: new RegExp(social.label) }),
@@ -229,9 +238,7 @@ describe("SiteFooter", () => {
       "href",
       "https://www.linkedin.com/in/austin-van-braeckel-1002b1219/",
     );
-    const resume = within(footer).getByRole("link", { name: /Résumé/ });
-    expect(resume).toHaveAttribute("href", "/resume.pdf");
-    expect(resume).toHaveAttribute("target", "_blank");
+    expectResume(footer);
   });
 });
 

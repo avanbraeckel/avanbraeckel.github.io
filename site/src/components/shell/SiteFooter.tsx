@@ -39,18 +39,20 @@ export function SiteFooter({
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              href={site.resume.href}
-              newTab
-              variant="plain"
-              showExternalIcon={false}
-              className={styles.link}
-            >
-              <Icon name="document" className={styles.icon} />
-              {site.resume.label}
-            </Link>
-          </li>
+          {site.resume && (
+            <li>
+              <Link
+                href={site.resume.href}
+                newTab
+                variant="plain"
+                showExternalIcon={false}
+                className={styles.link}
+              >
+                <Icon name="document" className={styles.icon} />
+                {site.resume.label}
+              </Link>
+            </li>
+          )}
         </ul>
       </Container>
     </footer>

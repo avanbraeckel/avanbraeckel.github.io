@@ -27,7 +27,8 @@ export interface SiteConfig {
   tagline: string | null;
   /** Public contact email. Owner input needed. */
   email: string | null;
-  resume: { label: string; href: string };
+  /** Hidden everywhere while null (the owner is updating the PDF). */
+  resume: { label: string; href: string } | null;
   nav: readonly NavItem[];
   social: readonly SocialLink[];
 }
@@ -37,7 +38,9 @@ export const site: SiteConfig = {
   url: "https://avanbraeckel.github.io",
   tagline: null,
   email: null,
-  resume: { label: "Résumé", href: "/resume.pdf" },
+  // Hidden until the owner uploads an updated PDF; restore with
+  // { label: "Résumé", href: "/resume.pdf" }.
+  resume: null,
   nav: [
     { label: "Projects", href: "/projects/" },
     { label: "Experience", href: "/experience/" },

@@ -329,16 +329,18 @@ function NavSheet({ open, onOpenChange, onExited, pathname }: NavSheetProps) {
             <div className={styles.actions}>
               <MotionToggle variant="row" />
               <ThemeToggle variant="row" />
-              <Button
-                href={site.resume.href}
-                newTab
-                icon="document"
-                size="large"
-                fullWidth
-                onClick={close}
-              >
-                {site.resume.label}
-              </Button>
+              {site.resume && (
+                <Button
+                  href={site.resume.href}
+                  newTab
+                  icon="document"
+                  size="large"
+                  fullWidth
+                  onClick={close}
+                >
+                  {site.resume.label}
+                </Button>
+              )}
               <div className={styles.social}>
                 {site.social.map((link) => (
                   <Button
